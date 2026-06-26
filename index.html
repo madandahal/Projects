@@ -1015,7 +1015,7 @@ const projects = {
     title: "DRL-Based Interference Mitigation in mmWave Multi-Cell Networks With Implicit CSI",
     tag: "DRL · mmWave", tagClass: "c-blue",
     desc: "A deep reinforcement learning agent that learns interference-aware beamforming policies without requiring explicit CSI exchange between base stations.",
-    venue: "IEEE Transactions on Wireless Communications", year: "2025", type: "Journal Paper",
+    venue: "IEEE  Open Journal of the Communications Society", year: "2025", type: "Journal Paper",
     overview: "Dense mmWave deployments suffer from severe inter-cell interference due to the directional nature of beams and overlapping coverage areas. Traditional mitigation techniques require explicit channel state information (CSI) shared among base stations — incurring significant signaling overhead. This project proposes a DRL agent that observes only implicit CSI (RSSI, SINR estimates) and learns, through interaction with the environment, how to select beamforming vectors that minimize inter-cell interference while maximizing served user throughput.",
     highlight: "Key novelty: no explicit CSI exchange between cells. The DRL agent uses only locally observable signal statistics as its state, making the approach scalable to dense multi-cell scenarios without backhaul overhead.",
     results: [
@@ -1029,10 +1029,10 @@ const projects = {
     canvasType: "network"
   },
   p2: {
-    title: "Multi-Agent DRL for Distributed Power Control in Heterogeneous 5G Networks",
+    title: "Selective experience sharing in reinforcement learning enhances interference management",
     tag: "DRL · Resource", tagClass: "c-purple",
     desc: "Decentralized multi-agent reinforcement learning enabling base stations to independently optimize transmit power while collectively maximizing network throughput.",
-    venue: "IEEE Transactions on Communications", year: "2024", type: "Journal Paper",
+    venue: "IEEE Communications Letters", year: "2025", type: "Journal Paper",
     overview: "Heterogeneous 5G networks with macro and small cells face complex power control problems. Centralized optimization is computationally prohibitive at scale. This work formulates power control as a multi-agent Markov decision process, where each base station acts as an independent agent trained using MADDPG. Agents share a joint critic during training but execute policies using only local observations.",
     highlight: "MADDPG training enables coordination without runtime communication — each BS makes power decisions using only its local SINR observations at inference time.",
     results: [
@@ -1045,10 +1045,10 @@ const projects = {
     link: "#", canvasType: "power"
   },
   p3: {
-    title: "Hybrid Beamforming Optimization for Massive MIMO mmWave Systems Using Deep Learning",
+    title: "Multi-agent deep reinforcement learning for multi-cell interference mitigation",
     tag: "MIMO · mmWave", tagClass: "c-green",
     desc: "A CNN framework mapping received pilot signals directly to near-optimal hybrid analog-digital beamforming codebook pairs.",
-    venue: "IEEE Transactions on Wireless Communications", year: "2024", type: "Journal Paper",
+    venue: "IEEE 57th Annual Conference on Information Sciences and Systems (CISS)", year: "2023", type: "Conference Paper",
     overview: "Hybrid beamforming in massive MIMO systems requires joint design of analog (RF) and digital (baseband) precoding matrices — a non-convex problem with exponential search space over codebooks. This work trains a convolutional neural network on pilot observations to directly predict the optimal codebook indices, bypassing iterative optimization entirely and enabling real-time beamforming decisions.",
     highlight: "The CNN achieves 96.4% of the spectral efficiency of exhaustive search while reducing computation time by a factor of 200×.",
     results: [
@@ -1061,10 +1061,10 @@ const projects = {
     link: "#", canvasType: "beam"
   },
   p4: {
-    title: "Transformer-Based Channel Estimation for OFDM in High-Mobility mmWave Channels",
+    title: "Deep reinforcement learning for interference management in millimeter-wave networks",
     tag: "Channel · mmWave", tagClass: "c-orange",
     desc: "Applying self-attention to jointly estimate time-varying mmWave channels across subcarriers, outperforming LSTM and pilot-based baselines.",
-    venue: "IEEE Transactions on Vehicular Technology", year: "2024", type: "Journal Paper",
+    venue: "IEEE 56th Asilomar Conference on Signals, Systems, and Computers", year: "2022", type: "Conference Paper",
     overview: "At high vehicle speeds, mmWave channels vary rapidly across OFDM symbols, rendering traditional pilot-interpolation methods ineffective. This work applies the Transformer architecture to channel estimation, exploiting both time and frequency correlations through multi-head self-attention. The model takes a sequence of pilot observations and predicts full channel matrices for all OFDM subcarriers.",
     highlight: "At 120 km/h with SNR = 20 dB, the Transformer estimator achieves an NMSE of –18.4 dB, compared to –11.2 dB for LSTM and –7.6 dB for LS interpolation.",
     results: [
@@ -1077,10 +1077,10 @@ const projects = {
     link: "#", canvasType: "ofdm"
   },
   p5: {
-    title: "Energy-Efficient Resource Allocation in UAV-Assisted mmWave Networks via DRL",
+    title: "Enhancing interference mitigation via hybrid action space control deep reinforcement learning",
     tag: "Resource · DRL", tagClass: "c-teal",
     desc: "Joint trajectory design and resource allocation for UAV base stations using PPO, minimizing energy while maintaining QoS.",
-    venue: "IEEE Wireless Communications Letters", year: "2023", type: "Letter",
+    venue: "IEEE Military Communications Conference (MILCOM)", year: "2024", type: "Conference Paper",
     overview: "UAV-mounted base stations can rapidly extend mmWave coverage in temporary or disaster scenarios, but their battery constraints demand energy-efficient operation. This work uses Proximal Policy Optimization (PPO) to jointly optimize 3D UAV trajectory, transmit power, and user scheduling over a time horizon, balancing energy consumption against QoS guarantees for ground users.",
     highlight: "PPO achieves 43% energy savings compared to static UAV placement while maintaining 99.1% QoS satisfaction, demonstrating the value of adaptive trajectory design.",
     results: [
@@ -1093,10 +1093,10 @@ const projects = {
     link: "#", canvasType: "uav"
   },
   p6: {
-    title: "Federated Learning for Cooperative Channel Prediction in Dense Small-Cell Networks",
+    title: "Joint power control and beamforming for interference mitigation in multi-user millimeter-wave systems",
     tag: "MIMO · Channel", tagClass: "c-red",
     desc: "Privacy-preserving federated learning where small cells collaboratively train a shared channel prediction model without exchanging raw CSI.",
-    venue: "IEEE Access", year: "2023", type: "Journal Paper",
+    venue: "IEEE International Conference on Machine Learning for Communication and Networking (ICMLCN)", year: "2023", type: "Conference Paper",
     overview: "Cooperative channel prediction across small cells can significantly improve handover decisions and proactive resource allocation. However, sharing raw channel data raises privacy concerns and incurs backhaul overhead. This project applies FedAvg-based federated learning: each small cell trains a local LSTM predictor on its own channel history and shares only model gradients with a central aggregator.",
     highlight: "Federated training converges within 40 communication rounds to within 2.1% of centralized training accuracy, while transmitting 95% less raw data.",
     results: [
@@ -1108,38 +1108,38 @@ const projects = {
     tags: ["Federated Learning", "Channel Prediction", "Privacy", "LSTM", "Small Cells", "FedAvg", "Cooperative Networks"],
     link: "#", canvasType: "federated"
   },
-  p7: {
-    title: "IRS-Assisted mmWave Communication With Joint Active and Passive Beamforming",
-    tag: "mmWave · Resource", tagClass: "c-purple",
-    desc: "Alternating optimization for jointly designing IRS phase shifts and BS beamforming to maximize NLOS coverage.",
-    venue: "IEEE Journal on Selected Areas in Communications", year: "2023", type: "Journal Paper",
-    overview: "Intelligent Reflecting Surfaces (IRS) extend mmWave coverage by reflecting signals toward blocked users without active RF chains. Joint optimization of IRS phase shifts and BS beamforming is a non-convex problem. This work develops an alternating optimization algorithm alternating between semidefinite relaxation for BS beamformers and manifold optimization for IRS phase shifts, achieving near-optimal coverage.",
-    highlight: "With 128 IRS elements, the proposed scheme increases the 5th-percentile SINR of NLOS users from –4.2 dB (no IRS) to +11.6 dB, bringing them into reliable coverage.",
-    results: [
-      { num: "+15.8 dB", label: "NLOS SINR Gain" },
-      { num: "128", label: "IRS Elements" },
-      { num: "3×", label: "Coverage Extension" },
-      { num: "AO", label: "Optimization Method" },
-    ],
-    tags: ["IRS", "Intelligent Reflecting Surface", "mmWave", "Beamforming", "NLOS", "Alternating Optimization", "Passive Beamforming"],
-    link: "#", canvasType: "irs"
-  },
-  p8: {
-    title: "Model-Free Beam Tracking for Mobile Users in mmWave Networks Using Deep Q-Learning",
-    tag: "DRL · MIMO", tagClass: "c-blue",
-    desc: "DQN-based beam tracking from RSSI history, reducing beam failure rate by 61% vs conventional periodic scanning.",
-    venue: "IEEE GLOBECOM", year: "2022", type: "Conference Paper",
-    overview: "Maintaining beam alignment for mobile users in mmWave networks is challenging due to the narrow beam widths and rapid channel variation. Conventional periodic beam sweeping wastes resources and introduces latency. This work trains a Deep Q-Network to predict the next best beam from a history of RSSI measurements, enabling proactive beam switching with minimal overhead.",
-    highlight: "The DQN beam tracker reduces beam failure rate by 61% and link recovery latency by 74% compared to periodic beam sweeping, using only 3 RSSI history samples as input.",
-    results: [
-      { num: "–61%", label: "Beam Failure Rate" },
-      { num: "–74%", label: "Recovery Latency" },
-      { num: "3", label: "RSSI History Samples" },
-      { num: "DQN", label: "RL Algorithm" },
-    ],
-    tags: ["DQN", "Beam Tracking", "mmWave", "Mobile Users", "RSSI", "Model-Free RL", "Beam Management", "5G NR"],
-    link: "#", canvasType: "beamtrack"
-  },
+  // p7: {
+  //   title: "IRS-Assisted mmWave Communication With Joint Active and Passive Beamforming",
+  //   tag: "mmWave · Resource", tagClass: "c-purple",
+  //   desc: "Alternating optimization for jointly designing IRS phase shifts and BS beamforming to maximize NLOS coverage.",
+  //   venue: "IEEE Journal on Selected Areas in Communications", year: "2023", type: "Journal Paper",
+  //   overview: "Intelligent Reflecting Surfaces (IRS) extend mmWave coverage by reflecting signals toward blocked users without active RF chains. Joint optimization of IRS phase shifts and BS beamforming is a non-convex problem. This work develops an alternating optimization algorithm alternating between semidefinite relaxation for BS beamformers and manifold optimization for IRS phase shifts, achieving near-optimal coverage.",
+  //   highlight: "With 128 IRS elements, the proposed scheme increases the 5th-percentile SINR of NLOS users from –4.2 dB (no IRS) to +11.6 dB, bringing them into reliable coverage.",
+  //   results: [
+  //     { num: "+15.8 dB", label: "NLOS SINR Gain" },
+  //     { num: "128", label: "IRS Elements" },
+  //     { num: "3×", label: "Coverage Extension" },
+  //     { num: "AO", label: "Optimization Method" },
+  //   ],
+  //   tags: ["IRS", "Intelligent Reflecting Surface", "mmWave", "Beamforming", "NLOS", "Alternating Optimization", "Passive Beamforming"],
+  //   link: "#", canvasType: "irs"
+  // },
+  // p8: {
+  //   title: "Model-Free Beam Tracking for Mobile Users in mmWave Networks Using Deep Q-Learning",
+  //   tag: "DRL · MIMO", tagClass: "c-blue",
+  //   desc: "DQN-based beam tracking from RSSI history, reducing beam failure rate by 61% vs conventional periodic scanning.",
+  //   venue: "IEEE GLOBECOM", year: "2022", type: "Conference Paper",
+  //   overview: "Maintaining beam alignment for mobile users in mmWave networks is challenging due to the narrow beam widths and rapid channel variation. Conventional periodic beam sweeping wastes resources and introduces latency. This work trains a Deep Q-Network to predict the next best beam from a history of RSSI measurements, enabling proactive beam switching with minimal overhead.",
+  //   highlight: "The DQN beam tracker reduces beam failure rate by 61% and link recovery latency by 74% compared to periodic beam sweeping, using only 3 RSSI history samples as input.",
+  //   results: [
+  //     { num: "–61%", label: "Beam Failure Rate" },
+  //     { num: "–74%", label: "Recovery Latency" },
+  //     { num: "3", label: "RSSI History Samples" },
+  //     { num: "DQN", label: "RL Algorithm" },
+  //   ],
+  //   tags: ["DQN", "Beam Tracking", "mmWave", "Mobile Users", "RSSI", "Model-Free RL", "Beam Management", "5G NR"],
+  //   link: "#", canvasType: "beamtrack"
+  // },
 };
 
 // ── NAVIGATION ──
