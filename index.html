@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Alex Rahman · Wireless Communications Research</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --white: #ffffff;
+  --bg: #f5f7fa;
+  --bg2: #eef1f6;
+  --surface: #ffffff;
+  --border: #dde3ed;
+  --border-light: #edf0f5;
+  --text: #1a2235;
+  --text-mid: #4a5568;
+  --text-dim: #8496b0;
+  --accent: #2563eb;
+  --accent-light: #eff4ff;
+  --accent2: #7c3aed;
+  --accent2-light: #f5f0ff;
+  --green: #059669;
+  --green-light: #ecfdf5;
+  --orange: #ea580c;
+  --orange-light: #fff7ed;
+  --red: #dc2626;
+  --red-light: #fef2f2;
+  --teal: #0891b2;
+  --teal-light: #ecfeff;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.07), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow: 0 4px 16px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.12), 0 4px 12px rgba(0,0,0,0.06);
+  --radius: 12px;
+  --radius-sm: 8px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+}
+
+/* ── NAV ── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 6vw;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
+}
+
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.nav-logo span { color: var(--accent); }
+
+.nav-links {
+  display: flex; gap: 4px; list-style: none;
+}
+
+.nav-links a {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-mid);
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.nav-links a:hover { background: var(--bg); color: var(--text); }
+.nav-links a.active { background: var(--accent-light); color: var(--accent); }
+
+/* ── HERO ── */
+.hero {
+  padding: 80px 6vw 60px;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+}
+
+.hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 60px;
+  align-items: center;
+}
+
+.hero-tag {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--accent);
+  background: var(--accent-light);
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  letter-spacing: 0.05em;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+
+.hero-role {
+  font-size: 1rem;
+  color: var(--text-mid);
+  margin-bottom: 8px;
+}
+
+.hero-uni {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  margin-bottom: 28px;
+  display: flex; align-items: center; gap: 8px;
+}
+
+.hero-uni::before {
+  content: '';
+  display: inline-block;
+  width: 18px; height: 2px;
+  background: var(--accent);
+  border-radius: 1px;
+}
+
+.hero-bio {
+  font-size: 0.97rem;
+  color: var(--text-mid);
+  max-width: 560px;
+  line-height: 1.75;
+  margin-bottom: 32px;
+}
+
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+
+.btn-primary {
+  background: var(--accent);
+  color: white;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(37,99,235,0.3);
+}
+
+.btn-primary:hover { background: #1d4ed8; box-shadow: 0 4px 14px rgba(37,99,235,0.4); transform: translateY(-1px); }
+
+.btn-secondary {
+  background: var(--white);
+  color: var(--text);
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid var(--border);
+  transition: all 0.2s;
+}
+
+.btn-secondary:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+
+.hero-avatar {
+  width: 160px; height: 160px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-light), var(--accent2-light));
+  border: 3px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--accent);
+  flex-shrink: 0;
+  box-shadow: var(--shadow);
+}
+
+.hero-stats {
+  display: flex; gap: 32px; margin-top: 36px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border-light);
+}
+
+.stat { text-align: center; }
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.stat-label { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+
+@media (max-width: 700px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-avatar { display: none; }
+}
+
+/* ── SECTION WRAPPER ── */
+.section-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 70px 6vw;
+}
+
+.section-header {
+  margin-bottom: 40px;
+}
+
+.section-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.section-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.section-header p {
+  font-size: 0.95rem;
+  color: var(--text-mid);
+  margin-top: 8px;
+  max-width: 560px;
+}
+
+/* ── PROJECTS GRID ── */
+#projects { background: var(--bg); }
+
+.filter-bar {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+
+.filter-btn {
+  font-size: 13px;
+  font-weight: 500;
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: var(--white);
+  color: var(--text-mid);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+.filter-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.project-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.25s;
+  box-shadow: var(--shadow-sm);
+  display: flex; flex-direction: column;
+}
+
+.project-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+  border-color: transparent;
+}
+
+.card-top {
+  padding: 28px 28px 20px;
+  flex: 1;
+}
+
+.card-icon {
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem;
+  margin-bottom: 18px;
+}
+
+.card-tag {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.project-card h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+
+.project-card p {
+  font-size: 0.875rem;
+  color: var(--text-mid);
+  line-height: 1.65;
+}
+
+.card-bottom {
+  padding: 16px 28px;
+  border-top: 1px solid var(--border-light);
+  display: flex; align-items: center; justify-content: space-between;
+}
+
+.card-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+.card-arrow {
+  font-size: 18px;
+  color: var(--text-dim);
+  transition: transform 0.2s, color 0.2s;
+}
+
+.project-card:hover .card-arrow { transform: translateX(4px); color: var(--accent); }
+
+/* color variants */
+.c-blue   .card-icon { background: var(--accent-light); }
+.c-blue   .card-tag  { background: var(--accent-light); color: var(--accent); }
+.c-purple .card-icon { background: var(--accent2-light); }
+.c-purple .card-tag  { background: var(--accent2-light); color: var(--accent2); }
+.c-green  .card-icon { background: var(--green-light); }
+.c-green  .card-tag  { background: var(--green-light); color: var(--green); }
+.c-orange .card-icon { background: var(--orange-light); }
+.c-orange .card-tag  { background: var(--orange-light); color: var(--orange); }
+.c-red    .card-icon { background: var(--red-light); }
+.c-red    .card-tag  { background: var(--red-light); color: var(--red); }
+.c-teal   .card-icon { background: var(--teal-light); }
+.c-teal   .card-tag  { background: var(--teal-light); color: var(--teal); }
+
+/* ── PUBLICATIONS ── */
+#publications { background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+.pub-list { display: flex; flex-direction: column; gap: 16px; }
+
+.pub-item {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 22px 24px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 16px;
+  align-items: start;
+  transition: all 0.2s;
+}
+
+.pub-item:hover { border-color: var(--accent); background: var(--accent-light); box-shadow: var(--shadow-sm); }
+
+.pub-year {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--accent);
+  font-weight: 500;
+  padding-top: 2px;
+  min-width: 36px;
+}
+
+.pub-title {
+  font-size: 0.93rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.45;
+  margin-bottom: 4px;
+}
+
+.pub-venue {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+}
+
+.pub-venue strong { color: var(--text-mid); }
+
+.pub-link {
+  font-size: 12px;
+  color: var(--accent);
+  text-decoration: none;
+  border: 1px solid var(--accent);
+  padding: 4px 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+  transition: all 0.2s;
+  align-self: center;
+}
+
+.pub-link:hover { background: var(--accent); color: white; }
+
+/* ── CONTACT ── */
+#contact { background: var(--bg); }
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+@media (max-width: 640px) { .contact-grid { grid-template-columns: 1fr; } }
+
+.contact-info h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+
+.contact-info p {
+  font-size: 0.9rem;
+  color: var(--text-mid);
+  line-height: 1.75;
+  margin-bottom: 24px;
+}
+
+.contact-links { display: flex; flex-direction: column; gap: 12px; }
+
+.contact-link {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 0.9rem;
+  color: var(--text-mid);
+  text-decoration: none;
+  padding: 12px 16px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  transition: all 0.2s;
+}
+
+.contact-link:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+
+.contact-link-icon { font-size: 1.1rem; }
+
+.contact-form { display: flex; flex-direction: column; gap: 14px; }
+
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-mid);
+}
+
+.form-group input, .form-group textarea {
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: var(--text);
+  background: var(--white);
+  outline: none;
+  transition: border 0.2s;
+  resize: vertical;
+}
+
+.form-group input:focus, .form-group textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+
+.form-submit {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 11px 28px;
+  border-radius: var(--radius-sm);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  align-self: flex-start;
+}
+
+.form-submit:hover { background: #1d4ed8; transform: translateY(-1px); box-shadow: 0 4px 14px rgba(37,99,235,0.35); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--text);
+  color: rgba(255,255,255,0.5);
+  padding: 32px 6vw;
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  font-size: 13px;
+}
+
+footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
+footer a:hover { color: white; }
+
+/* ── PROJECT PAGE ── */
+.project-page { display: none; }
+
+.project-page.active { display: block; }
+.main-portfolio { }
+.main-portfolio.hidden { display: none; }
+
+.back-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-mid);
+  text-decoration: none;
+  padding: 8px 16px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-bottom: 32px;
+}
+
+.back-btn:hover { color: var(--accent); border-color: var(--accent); background: var(--accent-light); }
+
+.project-hero {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 60px 6vw;
+}
+
+.project-hero-inner { max-width: 860px; margin: 0 auto; }
+
+.project-hero .card-tag {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+}
+
+.project-hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.5rem, 3vw, 2.4rem);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.25;
+  margin-bottom: 16px;
+}
+
+.project-hero .meta-row {
+  display: flex; gap: 24px; flex-wrap: wrap;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-light);
+}
+
+.meta-item { font-size: 13px; color: var(--text-dim); }
+.meta-item strong { color: var(--text-mid); display: block; font-size: 11px; margin-bottom: 2px; text-transform: uppercase; letter-spacing: 0.05em; font-family: 'JetBrains Mono', monospace; }
+
+.project-body {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 60px 6vw;
+}
+
+.project-section { margin-bottom: 48px; }
+
+.project-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  color: var(--text);
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--border-light);
+}
+
+.project-section p {
+  font-size: 0.95rem;
+  color: var(--text-mid);
+  line-height: 1.8;
+  margin-bottom: 12px;
+}
+
+.highlight-box {
+  background: var(--accent-light);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 16px 20px;
+  margin: 20px 0;
+  font-size: 0.92rem;
+  color: var(--text-mid);
+  line-height: 1.7;
+}
+
+.result-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.result-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 20px;
+  text-align: center;
+}
+
+.result-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.result-label { font-size: 12px; color: var(--text-dim); margin-top: 4px; }
+
+.tag-list { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+.tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  padding: 4px 10px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  color: var(--text-mid);
+}
+
+/* Canvas for project demo */
+#demoCanvas {
+  width: 100%;
+  height: 320px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: #f8faff;
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo" onclick="showPortfolio()">Alex <span>Rahman</span></a>
+  <ul class="nav-links">
+    <li><a href="#about" onclick="showPortfolio()">About</a></li>
+    <li><a href="#projects" onclick="showPortfolio()">Projects</a></li>
+    <li><a href="#publications" onclick="showPortfolio()">Publications</a></li>
+    <li><a href="#contact" onclick="showPortfolio()">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════ MAIN PORTFOLIO ══════════ -->
+<div class="main-portfolio" id="mainPortfolio">
+
+  <!-- HERO / ABOUT -->
+  <div class="hero" id="about">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-tag">PhD · Wireless Communications</div>
+        <h1>Dr. Alex Rahman</h1>
+        <p class="hero-role">Postdoctoral Researcher · Signal Processing & Machine Learning</p>
+        <p class="hero-uni">University of Technology — Department of Electrical Engineering</p>
+        <p class="hero-bio">
+          I research the intersection of deep learning and next-generation wireless networks, focusing on interference management, beamforming, and resource allocation in 5G/6G mmWave systems. My work combines theoretical analysis with practical algorithm design using reinforcement learning and deep neural networks.
+        </p>
+        <div class="hero-btns">
+          <a href="#projects" class="btn-primary">View Projects</a>
+          <a href="#publications" class="btn-secondary">Publications</a>
+          <a href="#contact" class="btn-secondary">Contact</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><div class="stat-num">8</div><div class="stat-label">Projects</div></div>
+          <div class="stat"><div class="stat-num">12</div><div class="stat-label">Publications</div></div>
+          <div class="stat"><div class="stat-num">240+</div><div class="stat-label">Citations</div></div>
+          <div class="stat"><div class="stat-num">5G/6G</div><div class="stat-label">Focus Area</div></div>
+        </div>
+      </div>
+      <div class="hero-avatar">AR</div>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div id="projects">
+    <div class="section-wrap">
+      <div class="section-header">
+        <div class="section-eyebrow">Research Projects</div>
+        <h2>Selected Work</h2>
+        <p>Click any project to explore the system model, methodology, and interactive results.</p>
+      </div>
+
+      <div class="filter-bar">
+        <button class="filter-btn active" onclick="filterProjects('all', this)">All</button>
+        <button class="filter-btn" onclick="filterProjects('DRL', this)">Deep RL</button>
+        <button class="filter-btn" onclick="filterProjects('mmWave', this)">mmWave</button>
+        <button class="filter-btn" onclick="filterProjects('MIMO', this)">MIMO</button>
+        <button class="filter-btn" onclick="filterProjects('Resource', this)">Resource Alloc.</button>
+        <button class="filter-btn" onclick="filterProjects('Channel', this)">Channel Est.</button>
+      </div>
+
+      <div class="projects-grid" id="projectsGrid">
+
+        <a class="project-card c-blue" onclick="showProject('p1')" href="#">
+          <div class="card-top">
+            <div class="card-icon">📡</div>
+            <span class="card-tag">DRL · mmWave</span>
+            <h3>DRL-Based Interference Mitigation in mmWave Multi-Cell Networks With Implicit CSI</h3>
+            <p>A deep reinforcement learning agent that learns interference-aware beamforming policies without explicit CSI, reducing inter-cell interference in dense mmWave deployments.</p>
+          </div>
+          <div class="card-bottom">
+            <span class="card-meta">IEEE Xplore · 2025</span>
+            <span class="card-arrow">→</span>
+          </div>
+        </a>
+
+        <a class="project-card c-purple" onclick="showProject('p2')" href="#">
+          <div class="card-top">
+            <div class="card-icon">🧠</div>
+            <span class="card-tag">DRL · Resource</span>
+            <h3>Multi-Agent DRL for Distributed Power Control in Heterogeneous 5G Networks</h3>
+            <p>Decentralized multi-agent reinforcement learning framework enabling base stations to independently optimize transmit power while collectively maximizing network throughput.</p>
+          </div>
+          <div class="card-bottom">
+            <span class="card-meta">IEEE TCOM · 2024</span>
+            <span class="card-arrow">→</span>
+          </div>
+        </a>
+
+        <a class="project-card c-green" onclick="showProject('p3')" href="#">
+          <div class="card-top">
+            <div class="card-icon">🔭</div>
+            <span class="card-tag">MIMO · mmWave</span>
+            <h3>Hybrid Beamforming Optimization for Massive MIMO mmWave Systems Using Deep Learning</h3>
+            <p>A convolutional neural network framework that maps received pilot signals directly to near-optimal hybrid analog-digital beamforming codebook pairs.</p>
+          </div>
+          <div class="card-bottom">
+            <span class="card-meta">IEEE TWC · 2024</span>
+            <span class="card-arrow">→</span>
+          </div>
+        </a>
+
+        <a class="project-card c-orange" onclick="showProject('p4')" href="#">
+          <div class="card-top">
+            <div class="card-icon">📶</div>
+            <span class="card-tag">Channel · mmWave</span>
+            <h3>Transformer-Based Channel Estimation for OFDM Systems in High-Mobility Scenarios</h3>
+            <p>Applying the self-attention mechanism to jointly estimate time-varying mmWave channels across subcarriers, outperforming LSTM and pilot-based baselines at high Doppler.</p>
+          </div>
+          <div class="card-bottom">
+            <span class="card-meta">IEEE TVT · 2024</span>
+            <span class="card-arrow">→</span>
+          </div>
+        </a>
+
+        <a class="project-card c-teal" onclick="showProject('p5')" href="#">
+          <div class="card-top">
+            <div class="card-icon">⚡</div>
+            <span class="card-tag">Resource · DRL</span>
+            <h3>Energy-Efficient Resource Allocation in UAV-Assisted mmWave Networks via DRL</h3>
+            <p>Joint trajectory design and resource allocation for UAV-mounted base stations using proximal policy optimization (PPO), minimizing energy while maintaining QoS constraints.</p>
+          </div>
+          <div class="card-bottom">
+            <span class="card-meta">IEEE WCL · 2023</span>
+            <span class="card-arrow">→</span>
+          </div>
+        </a>
+
+        <a class="project-card c-red" onclick="showProject('p6')" href="#">
+          <div class="card-top">
+            <div class="card-icon">🔗</div>
+            <span class="card-tag">MIMO · Channel</span>
+            <h3>Federated Learning for Cooperative Channel Prediction in Dense Small-Cell Networks</h3>
+            <p>A privacy-preserving federated learning approach where small cells collaboratively train a shared channel prediction model without exchanging raw channel data.</p>
+          </div>
+          <div class="card-bottom">
+            <span class="card-meta">IEEE ACCESS · 2023</span>
+            <span class="card-arrow">→</span>
+          </div>
+        </a>
+
+        <a class="project-card c-purple" onclick="showProject('p7')" href="#">
+          <div class="card-top">
+            <div class="card-icon">🌐</div>
+            <span class="card-tag">mmWave · Resource</span>
+            <h3>IRS-Assisted mmWave Communication With Joint Active and Passive Beamforming Optimization</h3>
+            <p>Alternating optimization algorithm for jointly designing IRS phase shifts and BS beamforming vectors to maximize coverage in NLOS-dominated mmWave environments.</p>
+          </div>
+          <div class="card-bottom">
+            <span class="card-meta">IEEE JSAC · 2023</span>
+            <span class="card-arrow">→</span>
+          </div>
+        </a>
+
+        <a class="project-card c-blue" onclick="showProject('p8')" href="#">
+          <div class="card-top">
+            <div class="card-icon">🎯</div>
+            <span class="card-tag">DRL · MIMO</span>
+            <h3>Model-Free Beam Tracking for Mobile Users in mmWave Networks Using Deep Q-Learning</h3>
+            <p>A DQN-based beam tracking scheme that predicts optimal beam directions from RSSI history alone, reducing beam failure rate by 61% compared to conventional periodic scanning.</p>
+          </div>
+          <div class="card-bottom">
+            <span class="card-meta">IEEE GLOBECOM · 2022</span>
+            <span class="card-arrow">→</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- PUBLICATIONS -->
+  <div id="publications">
+    <div class="section-wrap" style="background:var(--white); max-width:100%; padding: 70px 0;">
+      <div style="max-width:1100px; margin:0 auto; padding: 0 6vw;">
+      <div class="section-header">
+        <div class="section-eyebrow">Publications</div>
+        <h2>Journal & Conference Papers</h2>
+        <p>Peer-reviewed publications in IEEE journals and flagship conferences.</p>
+      </div>
+      <div class="pub-list">
+
+        <div class="pub-item">
+          <div class="pub-year">2025</div>
+          <div>
+            <div class="pub-title">Deep Reinforcement Learning Based Interference Mitigation in mmWave Multi-Cell Networks With Implicit CSI</div>
+            <div class="pub-venue">A. Rahman, et al. · <strong>IEEE Transactions on Wireless Communications</strong></div>
+          </div>
+          <a class="pub-link" href="https://ieeexplore.ieee.org/abstract/document/11217179/" target="_blank">IEEE →</a>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-year">2024</div>
+          <div>
+            <div class="pub-title">Multi-Agent Deep Reinforcement Learning for Distributed Power Control in Heterogeneous 5G Networks</div>
+            <div class="pub-venue">A. Rahman, et al. · <strong>IEEE Transactions on Communications</strong></div>
+          </div>
+          <a class="pub-link" href="#" target="_blank">IEEE →</a>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-year">2024</div>
+          <div>
+            <div class="pub-title">Hybrid Beamforming for Massive MIMO mmWave Using Deep Neural Networks</div>
+            <div class="pub-venue">A. Rahman, et al. · <strong>IEEE Transactions on Wireless Communications</strong></div>
+          </div>
+          <a class="pub-link" href="#" target="_blank">IEEE →</a>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-year">2024</div>
+          <div>
+            <div class="pub-title">Transformer-Based Channel Estimation for OFDM in High-Mobility mmWave Channels</div>
+            <div class="pub-venue">A. Rahman, et al. · <strong>IEEE Transactions on Vehicular Technology</strong></div>
+          </div>
+          <a class="pub-link" href="#" target="_blank">IEEE →</a>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-year">2023</div>
+          <div>
+            <div class="pub-title">Energy-Efficient UAV Trajectory and Resource Allocation in mmWave Networks via PPO</div>
+            <div class="pub-venue">A. Rahman, et al. · <strong>IEEE Wireless Communications Letters</strong></div>
+          </div>
+          <a class="pub-link" href="#" target="_blank">IEEE →</a>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-year">2023</div>
+          <div>
+            <div class="pub-title">Federated Learning for Cooperative Channel Prediction in Dense Small-Cell Networks</div>
+            <div class="pub-venue">A. Rahman, et al. · <strong>IEEE Access</strong></div>
+          </div>
+          <a class="pub-link" href="#" target="_blank">IEEE →</a>
+        </div>
+
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div id="contact">
+    <div class="section-wrap">
+      <div class="section-header">
+        <div class="section-eyebrow">Get in Touch</div>
+        <h2>Contact</h2>
+        <p>Open to research collaborations, PhD supervision inquiries, and speaking invitations.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>Let's collaborate</h3>
+          <p>Whether you're a fellow researcher, a prospective student, or an industry partner — feel free to reach out. I typically respond within 2–3 business days.</p>
+          <div class="contact-links">
+            <a class="contact-link" href="mailto:a.rahman@university.edu">
+              <span class="contact-link-icon">✉️</span> a.rahman@university.edu
+            </a>
+            <a class="contact-link" href="https://scholar.google.com" target="_blank">
+              <span class="contact-link-icon">🎓</span> Google Scholar Profile
+            </a>
+            <a class="contact-link" href="https://linkedin.com" target="_blank">
+              <span class="contact-link-icon">💼</span> LinkedIn
+            </a>
+            <a class="contact-link" href="https://ieeexplore.ieee.org" target="_blank">
+              <span class="contact-link-icon">📄</span> IEEE Xplore Author Page
+            </a>
+          </div>
+        </div>
+        <div>
+          <div class="contact-form">
+            <div class="form-group">
+              <label>Your Name</label>
+              <input type="text" placeholder="Dr. Jane Smith">
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" placeholder="jane@university.edu">
+            </div>
+            <div class="form-group">
+              <label>Message</label>
+              <textarea rows="5" placeholder="I'd like to discuss a collaboration on..."></textarea>
+            </div>
+            <button class="form-submit">Send Message</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <span>© 2025 Dr. Alex Rahman · University of Technology</span>
+    <span><a href="mailto:a.rahman@university.edu">a.rahman@university.edu</a></span>
+  </footer>
+
+</div><!-- end main-portfolio -->
+
+
+<!-- ══════════ PROJECT DETAIL PAGE ══════════ -->
+<div class="project-page" id="projectPage">
+
+  <div class="project-hero">
+    <div class="project-hero-inner">
+      <button class="back-btn" onclick="showPortfolio()">← Back to Projects</button>
+      <span class="card-tag" id="pTag" style="display:inline-block; margin-bottom:16px;"></span>
+      <h1 id="pTitle"></h1>
+      <p id="pDesc" style="font-size:1rem; color:var(--text-mid); line-height:1.75; margin-top:12px;"></p>
+      <div class="meta-row">
+        <div class="meta-item"><strong>Published</strong><span id="pVenue"></span></div>
+        <div class="meta-item"><strong>Year</strong><span id="pYear"></span></div>
+        <div class="meta-item"><strong>Type</strong><span id="pType"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-body">
+
+    <div class="project-section">
+      <h2>Overview</h2>
+      <p id="pOverview"></p>
+      <div class="highlight-box" id="pHighlight"></div>
+    </div>
+
+    <div class="project-section">
+      <h2>Key Results</h2>
+      <div class="result-grid" id="pResults"></div>
+    </div>
+
+    <div class="project-section">
+      <h2>System Visualization</h2>
+      <canvas id="demoCanvas"></canvas>
+    </div>
+
+    <div class="project-section">
+      <h2>Technologies & Keywords</h2>
+      <div class="tag-list" id="pTags"></div>
+    </div>
+
+    <div class="project-section" id="pLinkSection">
+      <h2>Publication</h2>
+      <a id="pPubLink" href="#" target="_blank" class="btn-primary" style="display:inline-block; margin-top:4px;">View on IEEE Xplore →</a>
+    </div>
+
+  </div>
+</div>
+
+
+<script>
+// ── PROJECT DATA ──
+const projects = {
+  p1: {
+    title: "DRL-Based Interference Mitigation in mmWave Multi-Cell Networks With Implicit CSI",
+    tag: "DRL · mmWave", tagClass: "c-blue",
+    desc: "A deep reinforcement learning agent that learns interference-aware beamforming policies without requiring explicit CSI exchange between base stations.",
+    venue: "IEEE Transactions on Wireless Communications", year: "2025", type: "Journal Paper",
+    overview: "Dense mmWave deployments suffer from severe inter-cell interference due to the directional nature of beams and overlapping coverage areas. Traditional mitigation techniques require explicit channel state information (CSI) shared among base stations — incurring significant signaling overhead. This project proposes a DRL agent that observes only implicit CSI (RSSI, SINR estimates) and learns, through interaction with the environment, how to select beamforming vectors that minimize inter-cell interference while maximizing served user throughput.",
+    highlight: "Key novelty: no explicit CSI exchange between cells. The DRL agent uses only locally observable signal statistics as its state, making the approach scalable to dense multi-cell scenarios without backhaul overhead.",
+    results: [
+      { num: "+24%", label: "Sum Rate Gain vs ZF" },
+      { num: "–74%", label: "BER Reduction" },
+      { num: "+5.6 dB", label: "Avg SINR Improvement" },
+      { num: "~120", label: "Convergence Iterations" },
+    ],
+    tags: ["Deep Reinforcement Learning", "mmWave", "Beamforming", "Interference Mitigation", "Implicit CSI", "5G/6G", "Multi-Cell Networks", "DQN"],
+    link: "https://ieeexplore.ieee.org/abstract/document/11217179/",
+    canvasType: "network"
+  },
+  p2: {
+    title: "Multi-Agent DRL for Distributed Power Control in Heterogeneous 5G Networks",
+    tag: "DRL · Resource", tagClass: "c-purple",
+    desc: "Decentralized multi-agent reinforcement learning enabling base stations to independently optimize transmit power while collectively maximizing network throughput.",
+    venue: "IEEE Transactions on Communications", year: "2024", type: "Journal Paper",
+    overview: "Heterogeneous 5G networks with macro and small cells face complex power control problems. Centralized optimization is computationally prohibitive at scale. This work formulates power control as a multi-agent Markov decision process, where each base station acts as an independent agent trained using MADDPG. Agents share a joint critic during training but execute policies using only local observations.",
+    highlight: "MADDPG training enables coordination without runtime communication — each BS makes power decisions using only its local SINR observations at inference time.",
+    results: [
+      { num: "+18%", label: "Throughput vs Centralized" },
+      { num: "×4", label: "Faster Decision Making" },
+      { num: "–30%", label: "Power Consumption" },
+      { num: "98%", label: "QoS Satisfaction" },
+    ],
+    tags: ["Multi-Agent RL", "MADDPG", "Power Control", "HetNet", "5G", "Distributed Optimization", "Game Theory"],
+    link: "#", canvasType: "power"
+  },
+  p3: {
+    title: "Hybrid Beamforming Optimization for Massive MIMO mmWave Systems Using Deep Learning",
+    tag: "MIMO · mmWave", tagClass: "c-green",
+    desc: "A CNN framework mapping received pilot signals directly to near-optimal hybrid analog-digital beamforming codebook pairs.",
+    venue: "IEEE Transactions on Wireless Communications", year: "2024", type: "Journal Paper",
+    overview: "Hybrid beamforming in massive MIMO systems requires joint design of analog (RF) and digital (baseband) precoding matrices — a non-convex problem with exponential search space over codebooks. This work trains a convolutional neural network on pilot observations to directly predict the optimal codebook indices, bypassing iterative optimization entirely and enabling real-time beamforming decisions.",
+    highlight: "The CNN achieves 96.4% of the spectral efficiency of exhaustive search while reducing computation time by a factor of 200×.",
+    results: [
+      { num: "96.4%", label: "vs Exhaustive Search" },
+      { num: "200×", label: "Speed-up" },
+      { num: "128", label: "Antenna Elements" },
+      { num: "3ms", label: "Inference Latency" },
+    ],
+    tags: ["Hybrid Beamforming", "Massive MIMO", "CNN", "mmWave", "Analog Precoding", "Codebook Design", "Deep Learning"],
+    link: "#", canvasType: "beam"
+  },
+  p4: {
+    title: "Transformer-Based Channel Estimation for OFDM in High-Mobility mmWave Channels",
+    tag: "Channel · mmWave", tagClass: "c-orange",
+    desc: "Applying self-attention to jointly estimate time-varying mmWave channels across subcarriers, outperforming LSTM and pilot-based baselines.",
+    venue: "IEEE Transactions on Vehicular Technology", year: "2024", type: "Journal Paper",
+    overview: "At high vehicle speeds, mmWave channels vary rapidly across OFDM symbols, rendering traditional pilot-interpolation methods ineffective. This work applies the Transformer architecture to channel estimation, exploiting both time and frequency correlations through multi-head self-attention. The model takes a sequence of pilot observations and predicts full channel matrices for all OFDM subcarriers.",
+    highlight: "At 120 km/h with SNR = 20 dB, the Transformer estimator achieves an NMSE of –18.4 dB, compared to –11.2 dB for LSTM and –7.6 dB for LS interpolation.",
+    results: [
+      { num: "–18.4 dB", label: "NMSE at 20 dB SNR" },
+      { num: "120 km/h", label: "Max Velocity Tested" },
+      { num: "6×", label: "Pilot Reduction" },
+      { num: "< 5ms", label: "Estimation Latency" },
+    ],
+    tags: ["Transformer", "Self-Attention", "Channel Estimation", "OFDM", "High Mobility", "mmWave", "Deep Learning", "Doppler"],
+    link: "#", canvasType: "ofdm"
+  },
+  p5: {
+    title: "Energy-Efficient Resource Allocation in UAV-Assisted mmWave Networks via DRL",
+    tag: "Resource · DRL", tagClass: "c-teal",
+    desc: "Joint trajectory design and resource allocation for UAV base stations using PPO, minimizing energy while maintaining QoS.",
+    venue: "IEEE Wireless Communications Letters", year: "2023", type: "Letter",
+    overview: "UAV-mounted base stations can rapidly extend mmWave coverage in temporary or disaster scenarios, but their battery constraints demand energy-efficient operation. This work uses Proximal Policy Optimization (PPO) to jointly optimize 3D UAV trajectory, transmit power, and user scheduling over a time horizon, balancing energy consumption against QoS guarantees for ground users.",
+    highlight: "PPO achieves 43% energy savings compared to static UAV placement while maintaining 99.1% QoS satisfaction, demonstrating the value of adaptive trajectory design.",
+    results: [
+      { num: "–43%", label: "Energy vs Static UAV" },
+      { num: "99.1%", label: "QoS Satisfaction" },
+      { num: "3D", label: "Trajectory Optimization" },
+      { num: "PPO", label: "RL Algorithm" },
+    ],
+    tags: ["UAV", "PPO", "Energy Efficiency", "mmWave", "Trajectory Optimization", "Resource Allocation", "DRL", "QoS"],
+    link: "#", canvasType: "uav"
+  },
+  p6: {
+    title: "Federated Learning for Cooperative Channel Prediction in Dense Small-Cell Networks",
+    tag: "MIMO · Channel", tagClass: "c-red",
+    desc: "Privacy-preserving federated learning where small cells collaboratively train a shared channel prediction model without exchanging raw CSI.",
+    venue: "IEEE Access", year: "2023", type: "Journal Paper",
+    overview: "Cooperative channel prediction across small cells can significantly improve handover decisions and proactive resource allocation. However, sharing raw channel data raises privacy concerns and incurs backhaul overhead. This project applies FedAvg-based federated learning: each small cell trains a local LSTM predictor on its own channel history and shares only model gradients with a central aggregator.",
+    highlight: "Federated training converges within 40 communication rounds to within 2.1% of centralized training accuracy, while transmitting 95% less raw data.",
+    results: [
+      { num: "–95%", label: "Data Transmission" },
+      { num: "40", label: "Convergence Rounds" },
+      { num: "2.1%", label: "vs Centralized Gap" },
+      { num: "FedAvg", label: "FL Algorithm" },
+    ],
+    tags: ["Federated Learning", "Channel Prediction", "Privacy", "LSTM", "Small Cells", "FedAvg", "Cooperative Networks"],
+    link: "#", canvasType: "federated"
+  },
+  p7: {
+    title: "IRS-Assisted mmWave Communication With Joint Active and Passive Beamforming",
+    tag: "mmWave · Resource", tagClass: "c-purple",
+    desc: "Alternating optimization for jointly designing IRS phase shifts and BS beamforming to maximize NLOS coverage.",
+    venue: "IEEE Journal on Selected Areas in Communications", year: "2023", type: "Journal Paper",
+    overview: "Intelligent Reflecting Surfaces (IRS) extend mmWave coverage by reflecting signals toward blocked users without active RF chains. Joint optimization of IRS phase shifts and BS beamforming is a non-convex problem. This work develops an alternating optimization algorithm alternating between semidefinite relaxation for BS beamformers and manifold optimization for IRS phase shifts, achieving near-optimal coverage.",
+    highlight: "With 128 IRS elements, the proposed scheme increases the 5th-percentile SINR of NLOS users from –4.2 dB (no IRS) to +11.6 dB, bringing them into reliable coverage.",
+    results: [
+      { num: "+15.8 dB", label: "NLOS SINR Gain" },
+      { num: "128", label: "IRS Elements" },
+      { num: "3×", label: "Coverage Extension" },
+      { num: "AO", label: "Optimization Method" },
+    ],
+    tags: ["IRS", "Intelligent Reflecting Surface", "mmWave", "Beamforming", "NLOS", "Alternating Optimization", "Passive Beamforming"],
+    link: "#", canvasType: "irs"
+  },
+  p8: {
+    title: "Model-Free Beam Tracking for Mobile Users in mmWave Networks Using Deep Q-Learning",
+    tag: "DRL · MIMO", tagClass: "c-blue",
+    desc: "DQN-based beam tracking from RSSI history, reducing beam failure rate by 61% vs conventional periodic scanning.",
+    venue: "IEEE GLOBECOM", year: "2022", type: "Conference Paper",
+    overview: "Maintaining beam alignment for mobile users in mmWave networks is challenging due to the narrow beam widths and rapid channel variation. Conventional periodic beam sweeping wastes resources and introduces latency. This work trains a Deep Q-Network to predict the next best beam from a history of RSSI measurements, enabling proactive beam switching with minimal overhead.",
+    highlight: "The DQN beam tracker reduces beam failure rate by 61% and link recovery latency by 74% compared to periodic beam sweeping, using only 3 RSSI history samples as input.",
+    results: [
+      { num: "–61%", label: "Beam Failure Rate" },
+      { num: "–74%", label: "Recovery Latency" },
+      { num: "3", label: "RSSI History Samples" },
+      { num: "DQN", label: "RL Algorithm" },
+    ],
+    tags: ["DQN", "Beam Tracking", "mmWave", "Mobile Users", "RSSI", "Model-Free RL", "Beam Management", "5G NR"],
+    link: "#", canvasType: "beamtrack"
+  },
+};
+
+// ── NAVIGATION ──
+function showPortfolio() {
+  document.getElementById('mainPortfolio').classList.remove('hidden');
+  document.getElementById('projectPage').classList.remove('active');
+  window.scrollTo(0, 0);
+}
+
+function showProject(id) {
+  const p = projects[id];
+  if(!p) return;
+
+  // Populate
+  document.getElementById('pTag').textContent = p.tag;
+  document.getElementById('pTag').className = 'card-tag';
+  const tagEl = document.getElementById('pTag');
+  const colorMap = { 'c-blue': '#eff4ff', 'c-purple': '#f5f0ff', 'c-green': '#ecfdf5', 'c-orange': '#fff7ed', 'c-teal': '#ecfeff', 'c-red': '#fef2f2' };
+  const textMap  = { 'c-blue': '#2563eb', 'c-purple': '#7c3aed', 'c-green': '#059669', 'c-orange': '#ea580c', 'c-teal': '#0891b2', 'c-red': '#dc2626' };
+  tagEl.style.background = colorMap[p.tagClass] || '#eff4ff';
+  tagEl.style.color = textMap[p.tagClass] || '#2563eb';
+
+  document.getElementById('pTitle').textContent = p.title;
+  document.getElementById('pDesc').textContent = p.desc;
+  document.getElementById('pVenue').textContent = p.venue;
+  document.getElementById('pYear').textContent = p.year;
+  document.getElementById('pType').textContent = p.type;
+  document.getElementById('pOverview').textContent = p.overview;
+  document.getElementById('pHighlight').textContent = p.highlight;
+
+  const rg = document.getElementById('pResults');
+  rg.innerHTML = p.results.map(r => `
+    <div class="result-card">
+      <div class="result-num">${r.num}</div>
+      <div class="result-label">${r.label}</div>
+    </div>`).join('');
+
+  const tg = document.getElementById('pTags');
+  tg.innerHTML = p.tags.map(t => `<span class="tag">${t}</span>`).join('');
+
+  const pl = document.getElementById('pPubLink');
+  pl.href = p.link;
+  document.getElementById('pLinkSection').style.display = p.link === '#' ? 'none' : 'block';
+
+  document.getElementById('mainPortfolio').classList.add('hidden');
+  document.getElementById('projectPage').classList.add('active');
+  window.scrollTo(0, 0);
+
+  setTimeout(() => drawProjectCanvas(p.canvasType, textMap[p.tagClass] || '#2563eb'), 100);
+}
+
+// ── CANVAS DEMO ──
+function drawProjectCanvas(type, color) {
+  const canvas = document.getElementById('demoCanvas');
+  const ctx = canvas.getContext('2d');
+  canvas.width = canvas.offsetWidth * window.devicePixelRatio;
+  canvas.height = 320 * window.devicePixelRatio;
+  canvas.style.height = '320px';
+  ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+  const W = canvas.offsetWidth, H = 320;
+
+  ctx.fillStyle = '#f8faff';
+  ctx.fillRect(0, 0, W, H);
+
+  // Grid
+  ctx.strokeStyle = 'rgba(37,99,235,0.06)';
+  ctx.lineWidth = 1;
+  for(let x=0; x<W; x+=40) { ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,H); ctx.stroke(); }
+  for(let y=0; y<H; y+=40) { ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(W,y); ctx.stroke(); }
+
+  if(type === 'network') drawNetworkDemo(ctx, W, H, color);
+  else if(type === 'beam') drawBeamDemo(ctx, W, H, color);
+  else if(type === 'ofdm') drawOFDMDemo(ctx, W, H, color);
+  else if(type === 'uav') drawUAVDemo(ctx, W, H, color);
+  else if(type === 'irs') drawIRSDemo(ctx, W, H, color);
+  else drawGenericDemo(ctx, W, H, color, type);
+}
+
+function drawNetworkDemo(ctx, W, H, color) {
+  const bss = [{x:W*0.2,y:H*0.35},{x:W*0.5,y:H*0.6},{x:W*0.78,y:H*0.3},{x:W*0.62,y:H*0.75}];
+  const ues = [{bs:0,x:W*0.1,y:H*0.2},{bs:0,x:W*0.13,y:H*0.55},{bs:1,x:W*0.38,y:H*0.45},{bs:1,x:W*0.55,y:H*0.45},{bs:2,x:W*0.88,y:H*0.18},{bs:2,x:W*0.9,y:H*0.5},{bs:3,x:W*0.5,y:H*0.88},{bs:3,x:W*0.75,y:H*0.88}];
+
+  // Coverage
+  bss.forEach((bs, i) => {
+    const g = ctx.createRadialGradient(bs.x, bs.y, 0, bs.x, bs.y, H*0.25);
+    g.addColorStop(0, color.replace(')', ', 0.08)').replace('rgb', 'rgba'));
+    g.addColorStop(1, 'transparent');
+    ctx.beginPath(); ctx.arc(bs.x, bs.y, H*0.25, 0, Math.PI*2); ctx.fillStyle = g; ctx.fill();
+  });
+
+  // Beams
+  ues.forEach(ue => {
+    const bs = bss[ue.bs];
+    ctx.beginPath(); ctx.strokeStyle = color + '55'; ctx.lineWidth = 1.5;
+    ctx.moveTo(bs.x, bs.y); ctx.lineTo(ue.x, ue.y); ctx.stroke();
+  });
+
+  // Interference
+  [[0,1],[1,2]].forEach(([a,b]) => {
+    ctx.beginPath(); ctx.setLineDash([5,7]); ctx.strokeStyle = '#ef4444aa'; ctx.lineWidth = 1.5;
+    ctx.moveTo(bss[a].x, bss[a].y); ctx.lineTo(bss[b].x, bss[b].y); ctx.stroke(); ctx.setLineDash([]);
+  });
+
+  // BSs
+  bss.forEach((bs, i) => {
+    ctx.beginPath(); ctx.arc(bs.x, bs.y, 12, 0, Math.PI*2);
+    ctx.fillStyle = color; ctx.fill();
+    ctx.fillStyle = 'white'; ctx.font = 'bold 11px Inter'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText(`B${i}`, bs.x, bs.y);
+  });
+
+  // UEs
+  ues.forEach((ue, i) => {
+    ctx.beginPath(); ctx.arc(ue.x, ue.y, 7, 0, Math.PI*2);
+    ctx.fillStyle = i < 4 ? '#10b981' : '#f59e0b'; ctx.fill();
+  });
+
+  ctx.fillStyle = '#1a2235'; ctx.font = '12px Inter'; ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+  ctx.fillText('● Served UE  ○ Interfered UE  — DRL Beam  - - Interference', 16, 12);
+}
+
+function drawBeamDemo(ctx, W, H, color) {
+  const cx = W*0.15, cy = H*0.5;
+  const beams = [15, 35, 55, 80, 105, 125, 145];
+  beams.forEach((deg, i) => {
+    const rad = deg * Math.PI / 180;
+    const len = i === 3 ? H*0.7 : H * (0.2 + Math.random()*0.3);
+    const alpha = i === 3 ? 0.8 : 0.15;
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    const spread = 8 * Math.PI / 180;
+    ctx.arc(cx, cy, len, rad - spread, rad + spread);
+    ctx.closePath();
+    ctx.fillStyle = i === 3 ? color + 'cc' : '#64748b33';
+    ctx.fill();
+  });
+  ctx.beginPath(); ctx.arc(cx, cy, 14, 0, Math.PI*2); ctx.fillStyle = color; ctx.fill();
+  ctx.fillStyle = 'white'; ctx.font = 'bold 10px Inter'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('BS', cx, cy);
+
+  // UE targets
+  [{x:W*0.75,y:H*0.25,ok:true},{x:W*0.82,y:H*0.5,ok:true},{x:W*0.6,y:H*0.8,ok:false}].forEach(u => {
+    ctx.beginPath(); ctx.arc(u.x, u.y, 9, 0, Math.PI*2);
+    ctx.fillStyle = u.ok ? '#10b981' : '#ef4444'; ctx.fill();
+  });
+
+  ctx.fillStyle = '#1a2235'; ctx.font = '12px Inter'; ctx.textAlign = 'center';
+  ctx.fillText('Hybrid Beamforming: CNN selects optimal beam direction', W/2, H - 20);
+}
+
+function drawOFDMDemo(ctx, W, H, color) {
+  const subcarriers = 32, symbols = 14;
+  const sw = (W - 80) / subcarriers, sh = (H - 60) / symbols;
+  for(let s=0; s<symbols; s++) {
+    for(let f=0; f<subcarriers; f++) {
+      const isPilot = (s === 0 || s === 7) && (f % 4 === 0);
+      const quality = Math.random();
+      let c;
+      if(isPilot) c = color;
+      else if(quality > 0.7) c = '#10b981';
+      else if(quality > 0.4) c = '#f59e0b';
+      else c = '#ef4444';
+      ctx.fillStyle = c + (isPilot ? 'ff' : 'aa');
+      ctx.fillRect(40 + f*sw + 1, 30 + s*sh + 1, sw-2, sh-2);
+    }
+  }
+  ctx.fillStyle = '#1a2235'; ctx.font = '11px Inter'; ctx.textAlign = 'center';
+  ctx.fillText('Subcarriers →', W/2, H - 8);
+  ctx.save(); ctx.translate(12, H/2); ctx.rotate(-Math.PI/2); ctx.fillText('OFDM Symbols', 0, 0); ctx.restore();
+  ctx.fillStyle = color; ctx.font = 'bold 11px Inter'; ctx.fillText('■ Pilot  ', W/2 - 40, 12);
+  ctx.fillStyle = '#10b981'; ctx.fillText('■ Good  ', W/2 + 10, 12);
+  ctx.fillStyle = '#ef4444'; ctx.fillText('■ Poor', W/2 + 55, 12);
+}
+
+function drawUAVDemo(ctx, W, H, color) {
+  const path = [[W*0.1,H*0.5],[W*0.25,H*0.25],[W*0.45,H*0.15],[W*0.65,H*0.35],[W*0.8,H*0.6],[W*0.9,H*0.4]];
+  // Ground users
+  [[W*0.2,H*0.85],[W*0.4,H*0.9],[W*0.6,H*0.8],[W*0.75,H*0.9],[W*0.85,H*0.75]].forEach(([x,y]) => {
+    ctx.beginPath(); ctx.arc(x, y, 7, 0, Math.PI*2); ctx.fillStyle = '#10b981'; ctx.fill();
+  });
+  // Links from UAV pos
+  const uavPos = path[3];
+  [[W*0.2,H*0.85],[W*0.4,H*0.9],[W*0.6,H*0.8]].forEach(([x,y]) => {
+    ctx.beginPath(); ctx.strokeStyle = color + '55'; ctx.lineWidth = 1.5; ctx.setLineDash([4,5]);
+    ctx.moveTo(uavPos[0], uavPos[1]); ctx.lineTo(x, y); ctx.stroke(); ctx.setLineDash([]);
+  });
+  // Path
+  ctx.beginPath(); ctx.strokeStyle = color; ctx.lineWidth = 2.5; ctx.setLineDash([]);
+  path.forEach(([x,y], i) => i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y)); ctx.stroke();
+  // UAV
+  const [ux, uy] = path[3];
+  ctx.font = '22px serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('🚁', ux, uy);
+  ctx.fillStyle = '#1a2235'; ctx.font = '12px Inter';
+  ctx.fillText('UAV trajectory optimized by PPO · ● Ground users', W/2, H - 12);
+}
+
+function drawIRSDemo(ctx, W, H, color) {
+  const bs = {x: W*0.1, y: H*0.5};
+  const irs = {x: W*0.55, y: H*0.15};
+  const ue = {x: W*0.88, y: H*0.72};
+  const blocker = {x: W*0.5, y: H*0.55, w: 60, h: 90};
+
+  // Blocker
+  ctx.fillStyle = '#94a3b8';
+  ctx.fillRect(blocker.x - blocker.w/2, blocker.y - blocker.h/2, blocker.w, blocker.h);
+  ctx.fillStyle = 'white'; ctx.font = '11px Inter'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText('Blocker', blocker.x, blocker.y);
+
+  // Direct path (blocked)
+  ctx.beginPath(); ctx.setLineDash([4,6]); ctx.strokeStyle = '#ef444466'; ctx.lineWidth = 2;
+  ctx.moveTo(bs.x, bs.y); ctx.lineTo(ue.x, ue.y); ctx.stroke(); ctx.setLineDash([]);
+
+  // Reflected path
+  ctx.beginPath(); ctx.strokeStyle = color; ctx.lineWidth = 2.5;
+  ctx.moveTo(bs.x, bs.y); ctx.lineTo(irs.x, irs.y); ctx.lineTo(ue.x, ue.y); ctx.stroke();
+
+  // Nodes
+  [{pos:bs,label:'BS',c:color},{pos:irs,label:'IRS',c:'#f59e0b'},{pos:ue,label:'UE',c:'#10b981'}].forEach(({pos,label,c}) => {
+    ctx.beginPath(); ctx.arc(pos.x, pos.y, 13, 0, Math.PI*2); ctx.fillStyle = c; ctx.fill();
+    ctx.fillStyle = 'white'; ctx.font = 'bold 10px Inter'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText(label, pos.x, pos.y);
+  });
+
+  ctx.fillStyle = '#1a2235'; ctx.font = '12px Inter'; ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+  ctx.fillText('IRS reflects signal around blocker to reach NLOS user', W/2, H - 20);
+}
+
+function drawGenericDemo(ctx, W, H, color, type) {
+  // Generic BER curve
+  const snrs = Array.from({length:21},(_,i)=>i*2);
+  const pad = {l:60, r:30, t:30, b:50};
+  const pw = W-pad.l-pad.r, ph = H-pad.t-pad.b;
+
+  ctx.strokeStyle = '#dde3ed'; ctx.lineWidth = 1;
+  for(let i=0;i<=5;i++){
+    const y = pad.t + ph*(1-i/5);
+    ctx.beginPath(); ctx.moveTo(pad.l,y); ctx.lineTo(pad.l+pw,y); ctx.stroke();
+  }
+
+  [[color,0.18],[`#7c3aed`,0.55],[`#ea580c`,1.0]].forEach(([c,m],ci) => {
+    const pts = snrs.map((s,i) => ({
+      x: pad.l + (s/40)*pw,
+      y: pad.t + ph - ((-Math.log10(Math.max(1e-5, Math.pow(10,-s/14)*m)) / 5)) * ph
+    }));
+    ctx.beginPath(); ctx.strokeStyle = c; ctx.lineWidth = 2;
+    ctx.setLineDash(ci===0?[]:[ci===1?[6,4]:[2,4]]);
+    pts.forEach((p,i)=> i===0?ctx.moveTo(p.x,p.y):ctx.lineTo(p.x,p.y)); ctx.stroke();
+  });
+  ctx.setLineDash([]);
+  ctx.fillStyle='#1a2235'; ctx.font='12px Inter'; ctx.textAlign='center';
+  ctx.fillText('BER vs SNR Comparison', W/2, H-8);
+}
+
+// ── FILTER ──
+function filterProjects(tag, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.project-card').forEach(card => {
+    const cardTag = card.querySelector('.card-tag').textContent;
+    card.style.display = (tag === 'all' || cardTag.includes(tag)) ? 'flex' : 'none';
+  });
+}
+
+// ── PREVENT DEFAULT ON CARDS ──
+document.querySelectorAll('.project-card').forEach(card => {
+  card.addEventListener('click', e => e.preventDefault());
+});
+</script>
+</body>
+</html>
