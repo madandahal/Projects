@@ -53,7 +53,7 @@ nav {
   background: rgba(255,255,255,0.92);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
-  padding: 0 6vw;
+  padding: 0 40px;
   display: flex; align-items: center; justify-content: space-between;
   height: 64px;
 }
@@ -87,13 +87,13 @@ nav {
 
 /* ── HERO ── */
 .hero {
-  padding: 80px 6vw 60px;
+  padding: 80px 40px 60px;
   background: var(--white);
   border-bottom: 1px solid var(--border);
 }
 
 .hero-inner {
-  max-width: 1100px;
+  max-width: 1280px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr auto;
@@ -217,9 +217,9 @@ nav {
 
 /* ── SECTION WRAPPER ── */
 .section-wrap {
-  max-width: 1100px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 70px 6vw;
+  padding: 70px 40px;
 }
 
 .section-header {
@@ -548,10 +548,10 @@ footer a:hover { color: white; }
 .project-hero {
   background: var(--white);
   border-bottom: 1px solid var(--border);
-  padding: 60px 6vw;
+  padding: 60px 40px;
 }
 
-.project-hero-inner { max-width: 860px; margin: 0 auto; }
+.project-hero-inner { max-width: 1280px; margin: 0 auto; }
 
 .project-hero .card-tag {
   display: inline-block;
@@ -582,9 +582,9 @@ footer a:hover { color: white; }
 .meta-item strong { color: var(--text-mid); display: block; font-size: 11px; margin-bottom: 2px; text-transform: uppercase; letter-spacing: 0.05em; font-family: 'JetBrains Mono', monospace; }
 
 .project-body {
-  max-width: 860px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 60px 6vw;
+  padding: 60px 40px;
 }
 
 .project-section { margin-bottom: 48px; }
@@ -658,6 +658,35 @@ footer a:hover { color: white; }
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   background: #f8faff;
+}
+
+/* Coming soon cards */
+.card-coming-soon {
+  position: relative;
+  pointer-events: none;
+  cursor: default;
+}
+.card-coming-soon:hover {
+  transform: none !important;
+  box-shadow: var(--shadow-sm) !important;
+  border-color: var(--border) !important;
+}
+.coming-soon-badge {
+  position: absolute;
+  top: 14px; right: 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #92400e;
+  background: #fef3c7;
+  border: 1px solid #fcd34d;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+.card-coming-soon .card-top,
+.card-coming-soon .card-bottom {
+  opacity: 0.5;
 }
 </style>
 </head>
@@ -738,7 +767,8 @@ footer a:hover { color: white; }
           </div>
         </a>
 
-        <a class="project-card c-purple" onclick="showProject('p2')" href="#">
+        <a class="project-card c-purple card-coming-soon" href="#">
+          <div class="coming-soon-badge">Coming Soon</div>
           <div class="card-top">
             <div class="card-icon">🧠</div>
             <span class="card-tag">DRL · Resource</span>
@@ -751,7 +781,8 @@ footer a:hover { color: white; }
           </div>
         </a>
 
-        <a class="project-card c-green" onclick="showProject('p3')" href="#">
+        <a class="project-card c-green card-coming-soon" href="#">
+          <div class="coming-soon-badge">Coming Soon</div>
           <div class="card-top">
             <div class="card-icon">🔭</div>
             <span class="card-tag">MIMO · mmWave</span>
@@ -764,7 +795,8 @@ footer a:hover { color: white; }
           </div>
         </a>
 
-        <a class="project-card c-orange" onclick="showProject('p4')" href="#">
+        <a class="project-card c-orange card-coming-soon" href="#">
+          <div class="coming-soon-badge">Coming Soon</div>
           <div class="card-top">
             <div class="card-icon">📶</div>
             <span class="card-tag">Channel · mmWave</span>
@@ -777,7 +809,8 @@ footer a:hover { color: white; }
           </div>
         </a>
 
-        <a class="project-card c-teal" onclick="showProject('p5')" href="#">
+        <a class="project-card c-teal card-coming-soon" href="#">
+          <div class="coming-soon-badge">Coming Soon</div>
           <div class="card-top">
             <div class="card-icon">⚡</div>
             <span class="card-tag">Resource · DRL</span>
@@ -790,7 +823,8 @@ footer a:hover { color: white; }
           </div>
         </a>
 
-        <a class="project-card c-red" onclick="showProject('p6')" href="#">
+        <a class="project-card c-red card-coming-soon" href="#">
+          <div class="coming-soon-badge">Coming Soon</div>
           <div class="card-top">
             <div class="card-icon">🔗</div>
             <span class="card-tag">MIMO · Channel</span>
@@ -836,7 +870,7 @@ footer a:hover { color: white; }
   <!-- PUBLICATIONS -->
   <div id="publications">
     <div class="section-wrap" style="background:var(--white); max-width:100%; padding: 70px 0;">
-      <div style="max-width:1100px; margin:0 auto; padding: 0 6vw;">
+      <div style="max-width:1280px; margin:0 auto; padding: 0 40px;">
       <div class="section-header">
         <div class="section-eyebrow">Publications</div>
         <h2>Journal & Conference Papers</h2>
@@ -989,7 +1023,65 @@ footer a:hover { color: white; }
       <div class="result-grid" id="pResults"></div>
     </div>
 
-    <div class="project-section">
+    <div class="project-section" id="p1InteractiveDemo" style="display:none;">
+      <h2>Interactive Demo — mmWave Hexagonal Network</h2>
+      <p style="font-size:0.9rem; color:var(--text-mid); margin-bottom:20px;">Adjust cells (1–7), users per cell, antennas and path loss. Watch the live animated network, then run a simulation to compare DRL against baselines.</p>
+      <div style="display:grid; grid-template-columns:200px 1fr; gap:16px; align-items:start;">
+        <div style="background:var(--bg); border:1px solid var(--border); border-radius:var(--radius-sm); padding:18px;">
+          <div style="font-size:11px; font-weight:500; color:var(--text-dim); text-transform:uppercase; letter-spacing:.07em; margin-bottom:10px;">Network</div>
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px;">
+            <label style="font-size:12px; color:var(--text-mid); min-width:90px;">Hex cells</label>
+            <input type="range" id="dC" min="1" max="7" value="3" step="1" style="flex:1;" oninput="dvC.textContent=this.value; dGo();">
+            <span id="dvC" style="font-size:13px; font-weight:500; color:var(--text); min-width:20px; text-align:right;">3</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px;">
+            <label style="font-size:12px; color:var(--text-mid); min-width:90px;">Users / cell</label>
+            <input type="range" id="dU" min="1" max="8" value="3" step="1" style="flex:1;" oninput="dvU.textContent=this.value; dGo();">
+            <span id="dvU" style="font-size:13px; font-weight:500; color:var(--text); min-width:20px; text-align:right;">3</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px;">
+            <label style="font-size:12px; color:var(--text-mid); min-width:90px;">Antennas</label>
+            <input type="range" id="dA" min="16" max="256" value="64" step="16" style="flex:1;" oninput="dvA.textContent=this.value;">
+            <span id="dvA" style="font-size:13px; font-weight:500; color:var(--text); min-width:28px; text-align:right;">64</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:16px;">
+            <label style="font-size:12px; color:var(--text-mid); min-width:90px;">Path loss</label>
+            <input type="range" id="dP" min="20" max="50" value="35" step="1" style="flex:1;" oninput="dvP.textContent=(this.value/10).toFixed(1);">
+            <span id="dvP" style="font-size:13px; font-weight:500; color:var(--text); min-width:28px; text-align:right;">3.5</span>
+          </div>
+          <div style="font-size:11px; font-weight:500; color:var(--text-dim); text-transform:uppercase; letter-spacing:.07em; margin-bottom:8px;">Algorithm</div>
+          <div style="display:flex; flex-direction:column; gap:5px; margin-bottom:14px;" id="dAB">
+            <button onclick="dSA('drl',this)" style="font-size:12px;padding:7px 10px;border:1px solid var(--accent);background:var(--accent-light);color:var(--accent);border-radius:6px;cursor:pointer;text-align:left;font-family:'JetBrains Mono',monospace;">DRL (implicit CSI)</button>
+            <button onclick="dSA('zf',this)"  style="font-size:12px;padding:7px 10px;border:1px solid var(--border);background:transparent;color:var(--text-mid);border-radius:6px;cursor:pointer;text-align:left;font-family:'JetBrains Mono',monospace;">Zero-forcing BF</button>
+            <button onclick="dSA('uni',this)" style="font-size:12px;padding:7px 10px;border:1px solid var(--border);background:transparent;color:var(--text-mid);border-radius:6px;cursor:pointer;text-align:left;font-family:'JetBrains Mono',monospace;">Uniform power</button>
+            <button onclick="dSA('all',this)" style="font-size:12px;padding:7px 10px;border:1px solid var(--border);background:transparent;color:var(--text-mid);border-radius:6px;cursor:pointer;text-align:left;font-family:'JetBrains Mono',monospace;">Compare all</button>
+          </div>
+          <button id="dRB" onclick="dRun()" style="width:100%;padding:9px;background:var(--accent);color:white;border:none;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;margin-bottom:7px;">▶ Run simulation</button>
+          <div style="height:3px;background:var(--border);border-radius:2px;overflow:hidden;margin-bottom:6px;"><div id="dPF" style="height:100%;background:var(--accent);width:0%;transition:width .1s;border-radius:2px;"></div></div>
+          <div id="dST" style="font-size:11px;color:var(--text-dim);">Ready — configure and run</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:14px;">
+            <div style="background:var(--white);border:1px solid var(--border);border-radius:6px;padding:10px;text-align:center;"><div id="dm1" style="font-size:1.1rem;font-weight:600;color:var(--accent);">—</div><div style="font-size:10px;color:var(--text-dim);margin-top:2px;">Sum rate</div></div>
+            <div style="background:var(--white);border:1px solid var(--border);border-radius:6px;padding:10px;text-align:center;"><div id="dm2" style="font-size:1.1rem;font-weight:600;color:var(--accent);">—</div><div style="font-size:10px;color:var(--text-dim);margin-top:2px;">BER</div></div>
+            <div style="background:var(--white);border:1px solid var(--border);border-radius:6px;padding:10px;text-align:center;"><div id="dm3" style="font-size:1.1rem;font-weight:600;color:var(--accent);">—</div><div style="font-size:10px;color:var(--text-dim);margin-top:2px;">SINR</div></div>
+            <div style="background:var(--white);border:1px solid var(--border);border-radius:6px;padding:10px;text-align:center;"><div id="dm4" style="font-size:1.1rem;font-weight:600;color:var(--accent);">—</div><div style="font-size:10px;color:var(--text-dim);margin-top:2px;">Conv.</div></div>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:11px;font-weight:500;color:var(--text-dim);text-transform:uppercase;letter-spacing:.07em;margin-bottom:7px;">Network topology</div>
+          <canvas id="dHC" style="width:100%;height:320px;border:1px solid var(--border);border-radius:var(--radius-sm);background:#f8faff;display:block;margin-bottom:7px;"></canvas>
+          <div style="display:flex;gap:14px;flex-wrap:wrap;font-size:11px;color:var(--text-dim);margin-bottom:14px;">
+            <span style="display:flex;align-items:center;gap:4px;"><span style="width:9px;height:9px;border-radius:50%;background:#2563eb;display:inline-block;"></span>Base station</span>
+            <span style="display:flex;align-items:center;gap:4px;"><span style="width:9px;height:9px;border-radius:50%;background:#1D9E75;display:inline-block;"></span>Served UE</span>
+            <span style="display:flex;align-items:center;gap:4px;"><span style="width:9px;height:9px;border-radius:50%;background:#E24B4A;display:inline-block;"></span>Interfered UE</span>
+            <span style="display:flex;align-items:center;gap:4px;"><span style="width:18px;height:0;border-top:1.5px dashed #E24B4A;display:inline-block;"></span>Interference</span>
+          </div>
+          <div style="font-size:11px;font-weight:500;color:var(--text-dim);text-transform:uppercase;letter-spacing:.07em;margin-bottom:7px;">BER vs SNR</div>
+          <canvas id="dBC" style="width:100%;height:220px;border:1px solid var(--border);border-radius:var(--radius-sm);background:#f8faff;display:block;"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-section" id="p1GenericDemo">
       <h2>System Visualization</h2>
       <canvas id="demoCanvas"></canvas>
     </div>
@@ -1188,7 +1280,15 @@ function showProject(id) {
   document.getElementById('projectPage').classList.add('active');
   window.scrollTo(0, 0);
 
-  setTimeout(() => drawProjectCanvas(p.canvasType, textMap[p.tagClass] || '#2563eb'), 100);
+  if(id === 'p1') {
+    document.getElementById('p1InteractiveDemo').style.display = 'block';
+    document.getElementById('p1GenericDemo').style.display = 'none';
+    setTimeout(()=>{if(dRaf)cancelAnimationFrame(dRaf);dFr=0;dDone=false;dGo();dDrawBER();}, 150);
+  } else {
+    document.getElementById('p1InteractiveDemo').style.display = 'none';
+    document.getElementById('p1GenericDemo').style.display = 'block';
+    setTimeout(() => drawProjectCanvas(p.canvasType, textMap[p.tagClass] || '#2563eb'), 100);
+  }
 }
 
 // ── CANVAS DEMO ──
@@ -1396,7 +1496,7 @@ function drawGenericDemo(ctx, W, H, color, type) {
 function filterProjects(tag, btn) {
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  document.querySelectorAll('.project-card').forEach(card => {
+  document.querySelectorAll('.project-card:not(.card-coming-soon)').forEach(card => {
     const cardTag = card.querySelector('.card-tag').textContent;
     card.style.display = (tag === 'all' || cardTag.includes(tag)) ? 'flex' : 'none';
   });
@@ -1406,6 +1506,121 @@ function filterProjects(tag, btn) {
 document.querySelectorAll('.project-card').forEach(card => {
   card.addEventListener('click', e => e.preventDefault());
 });
+
+// ── HEX INTERACTIVE DEMO (p1) ──
+const D_LAYOUTS={1:[[0,0]],2:[[0,0],[1,0]],3:[[0,0],[1,0],[0,1]],4:[[0,0],[1,0],[0,1],[1,1]],5:[[0,0],[1,0],[2,0],[0,1],[1,1]],6:[[0,0],[1,0],[2,0],[0,1],[1,1],[2,1]],7:[[0,0],[1,0],[2,0],[0,1],[1,1],[2,1],[1,2]]};
+const D_COLS=['#2563eb','#1D9E75','#BA7517','#7F77DD','#0F6E56','#D85A30','#D4537E'];
+let dRaf=null,dFr=0,dAlgo='drl',dDone=false;
+
+function dHexPts(cx,cy,r){return Array.from({length:6},(_,i)=>{const a=Math.PI/3*i-Math.PI/6;return[cx+r*Math.cos(a),cy+r*Math.sin(a)];});}
+
+function dDrawHex(f){
+  const cv=document.getElementById('dHC');if(!cv)return;
+  const dpr=window.devicePixelRatio||1;
+  if(cv.width!==cv.offsetWidth*dpr){cv.width=cv.offsetWidth*dpr;cv.height=320*dpr;cv.getContext('2d').scale(dpr,dpr);}
+  const ctx=cv.getContext('2d'),W=cv.offsetWidth,H=320;
+  ctx.clearRect(0,0,W,H);ctx.fillStyle='#f8faff';ctx.fillRect(0,0,W,H);
+  const nC=+document.getElementById('dC').value,nU=+document.getElementById('dU').value;
+  const layout=D_LAYOUTS[nC];
+  const cols=Math.max(...layout.map(l=>l[0]))+1,rows=Math.max(...layout.map(l=>l[1]))+1;
+  const sz=Math.min((W-40)/(cols*Math.sqrt(3)+(rows>1?Math.sqrt(3)/2:0)+0.3),(H-40)/(rows*1.5+0.5),85);
+  const totalW=sz*Math.sqrt(3)*(cols+(rows>1?0.5:0)),totalH=sz*(1.5*(rows-1)+Math.sqrt(3));
+  const ox=(W-totalW)/2+sz*Math.sqrt(3)/2,oy=(H-totalH)/2+sz*Math.sqrt(3)/2;
+  const centers=layout.map(([c,r])=>([ox+sz*Math.sqrt(3)*(c+(r&1)*0.5),oy+sz*1.5*r]));
+
+  centers.forEach(([cx,cy],i)=>{
+    const pts=dHexPts(cx,cy,sz*0.96);
+    ctx.beginPath();pts.forEach(([x,y],j)=>j?ctx.lineTo(x,y):ctx.moveTo(x,y));ctx.closePath();
+    ctx.fillStyle=D_COLS[i%D_COLS.length]+'1a';ctx.strokeStyle=D_COLS[i%D_COLS.length]+'99';ctx.lineWidth=1.5;ctx.fill();ctx.stroke();
+  });
+
+  for(let i=0;i<centers.length;i++)for(let j=i+1;j<centers.length;j++){
+    const dx=centers[j][0]-centers[i][0],dy=centers[j][1]-centers[i][1];
+    if(Math.sqrt(dx*dx+dy*dy)<sz*2.1){
+      const t=(Math.sin(f*0.04+i*0.8)+1)/2;
+      ctx.beginPath();ctx.setLineDash([5,7]);ctx.strokeStyle=`rgba(226,75,74,${0.15+t*0.25})`;ctx.lineWidth=1;
+      ctx.moveTo(centers[i][0],centers[i][1]);ctx.lineTo(centers[j][0],centers[j][1]);ctx.stroke();ctx.setLineDash([]);
+    }
+  }
+
+  centers.forEach(([cx,cy],ci)=>{
+    for(let u=0;u<nU;u++){
+      const angle=Math.PI*2*u/nU+ci*1.05+0.2,dist=sz*(0.28+0.28*((ci*5+u*3)%7)/7);
+      const ux=cx+Math.cos(angle)*dist,uy=cy+Math.sin(angle)*dist;
+      const interfered=Math.sin(f*0.05+ci*1.3+u*0.9)>0.55;
+      ctx.beginPath();ctx.strokeStyle=interfered?`rgba(226,75,74,0.35)`:D_COLS[ci%D_COLS.length]+'55';ctx.lineWidth=1;ctx.moveTo(cx,cy);ctx.lineTo(ux,uy);ctx.stroke();
+      ctx.beginPath();ctx.arc(ux,uy,4.5,0,Math.PI*2);ctx.fillStyle=interfered?'#E24B4A':'#1D9E75';ctx.fill();
+    }
+  });
+
+  centers.forEach(([cx,cy],i)=>{
+    const p=(Math.sin(dFr*0.04+i)+1)/2;
+    ctx.beginPath();ctx.arc(cx,cy,14+p*5,0,Math.PI*2);ctx.strokeStyle=D_COLS[i%D_COLS.length]+'33';ctx.lineWidth=1;ctx.stroke();
+    ctx.beginPath();ctx.arc(cx,cy,11,0,Math.PI*2);ctx.fillStyle=D_COLS[i%D_COLS.length];ctx.fill();
+    ctx.fillStyle='#fff';ctx.font='bold 9px sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('B'+i,cx,cy);
+  });
+}
+
+function dDrawBER(){
+  const cv=document.getElementById('dBC');if(!cv)return;
+  const dpr=window.devicePixelRatio||1;
+  if(!cv._init){cv.width=cv.offsetWidth*dpr;cv.height=220*dpr;cv._init=true;}
+  const ctx=cv.getContext('2d'),W=cv.offsetWidth,H=220;
+  ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);ctx.fillStyle='#f8faff';ctx.fillRect(0,0,W,H);
+  const P={t:22,r:16,b:36,l:48},PW=W-P.l-P.r,PH=H-P.t-P.b;
+  const nC=+document.getElementById('dC').value,ant=+document.getElementById('dA').value,lc='#8496b0';
+  ctx.strokeStyle='rgba(0,0,0,0.07)';ctx.lineWidth=0.5;
+  for(let i=0;i<=4;i++){const y=P.t+PH*(1-i/4);ctx.beginPath();ctx.moveTo(P.l,y);ctx.lineTo(P.l+PW,y);ctx.stroke();}
+  for(let i=0;i<=5;i++){const x=P.l+PW*i/5;ctx.beginPath();ctx.moveTo(x,P.t);ctx.lineTo(x,P.t+PH);ctx.stroke();}
+  ctx.fillStyle=lc;ctx.font='10px Inter,sans-serif';ctx.textAlign='center';
+  [0,8,16,24,32,40].forEach((s,i)=>ctx.fillText(s,P.l+PW*i/5,P.t+PH+14));
+  ctx.textAlign='right';['1','1e-1','1e-2','1e-3','1e-4'].forEach((b,i)=>ctx.fillText(b,P.l-5,P.t+PH*(i/4)+4));
+  ctx.textAlign='center';ctx.fillText('SNR (dB)',P.l+PW/2,H-4);
+  ctx.save();ctx.translate(11,P.t+PH/2);ctx.rotate(-Math.PI/2);ctx.fillText('BER',0,0);ctx.restore();
+  const ALGOS=dAlgo==='all'?[['drl','#2563eb',[]],['zf','#BA7517',[6,4]],['uni','#E24B4A',[2,4]]]:[[dAlgo,dAlgo==='drl'?'#2563eb':dAlgo==='zf'?'#BA7517':'#E24B4A',[]]];
+  ALGOS.forEach(([a,c,d])=>{
+    const m={drl:Math.max(0.04,0.14+(nC-1)*0.018-(ant-16)*0.0004),zf:0.48+(nC-1)*0.03,uni:0.98+(nC-1)*0.05}[a]||0.5;
+    ctx.beginPath();ctx.setLineDash(d);ctx.strokeStyle=c;ctx.lineWidth=2;
+    for(let i=0;i<=20;i++){const snr=i*2,ber=Math.max(1e-4,Math.pow(10,-snr/13)*m);const px=P.l+(snr/40)*PW,py=P.t+PH-(Math.log10(ber)+4)/4*PH;i===0?ctx.moveTo(px,py):ctx.lineTo(px,py);}
+    ctx.stroke();ctx.setLineDash([]);
+  });
+  let lx=P.l+4;
+  ALGOS.forEach(([a,c,d])=>{
+    ctx.beginPath();ctx.setLineDash(d);ctx.strokeStyle=c;ctx.lineWidth=2;ctx.moveTo(lx,P.t+10);ctx.lineTo(lx+16,P.t+10);ctx.stroke();ctx.setLineDash([]);
+    ctx.fillStyle=lc;ctx.font='10px Inter,sans-serif';ctx.textAlign='left';
+    const lb=a==='drl'?'DRL (ours)':a==='zf'?'Zero-forcing':'Uniform';ctx.fillText(lb,lx+20,P.t+14);lx+=ctx.measureText(lb).width+38;
+  });
+}
+
+function dSA(a,btn){
+  dAlgo=a;
+  document.querySelectorAll('#dAB button').forEach(b=>{b.style.borderColor='var(--border)';b.style.background='transparent';b.style.color='var(--text-mid)';});
+  btn.style.borderColor='var(--accent)';btn.style.background='var(--accent-light)';btn.style.color='var(--accent)';
+  if(dDone)dDrawBER();
+}
+
+function dGo(){
+  if(dRaf)cancelAnimationFrame(dRaf);dFr=0;
+  (function loop(){dDrawHex(dFr++);dRaf=requestAnimationFrame(loop);})();
+}
+
+function dRun(){
+  const btn=document.getElementById('dRB');btn.disabled=true;
+  const pf=document.getElementById('dPF'),st=document.getElementById('dST');
+  const nC=+document.getElementById('dC').value,ant=+document.getElementById('dA').value;
+  let p=0;st.textContent='Simulating…';
+  const iv=setInterval(()=>{
+    p+=4+Math.random()*10;
+    if(p>=100){
+      p=100;clearInterval(iv);pf.style.width='100%';btn.disabled=false;dDone=true;dDrawBER();
+      const a=dAlgo==='all'?'drl':dAlgo;
+      const R={drl:[`+${Math.round(18+(nC-1)*2+ant/16)}%`,'2.1e-4',`${(18+ant/16).toFixed(1)} dB`,'~120'],zf:['+8%','8.3e-4','12.4 dB','N/A'],uni:['Baseline','3.1e-3','7.2 dB','N/A']}[a];
+      ['dm1','dm2','dm3','dm4'].forEach((id,i)=>document.getElementById(id).textContent=R[i]);
+      st.textContent=`Done — ${nC} cells, ${ant} antennas`;
+    }
+    pf.style.width=Math.min(p,100)+'%';
+  },70);
+}
 </script>
 </body>
 </html>
