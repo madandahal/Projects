@@ -659,6 +659,98 @@ footer a:hover { color: white; }
   border-radius: var(--radius-sm);
   background: #f8faff;
 }
+
+/* Coming Soon page */
+.cs-wrap {
+  max-width: 600px;
+  margin: 80px auto;
+  text-align: center;
+  padding: 0 40px;
+}
+.cs-badge {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: #92400e;
+  background: #fef3c7;
+  border: 1px solid #fcd34d;
+  padding: 5px 16px;
+  border-radius: 20px;
+  margin-bottom: 24px;
+}
+.cs-icon {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+}
+.cs-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+  margin-bottom: 16px;
+}
+.cs-desc {
+  font-size: 0.95rem;
+  color: var(--text-mid);
+  line-height: 1.75;
+  margin-bottom: 32px;
+}
+.cs-tag {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 28px;
+}
+.cs-notify {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.cs-bar {
+  width: 100%;
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+  margin: 32px 0 12px;
+}
+.cs-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), #7c3aed);
+  border-radius: 2px;
+  animation: csProgress 2.5s ease-in-out infinite alternate;
+}
+@keyframes csProgress {
+  from { width: 20%; }
+  to   { width: 80%; }
+}
+.cs-progress-lbl {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+/* Coming soon badge on cards */
+.cs-card-badge {
+  position: absolute;
+  top: 12px; right: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #92400e;
+  background: #fef3c7;
+  border: 1px solid #fcd34d;
+  padding: 3px 9px;
+  border-radius: 20px;
+  pointer-events: none;
+}
 </style>
 </head>
 <body>
@@ -738,7 +830,8 @@ footer a:hover { color: white; }
           </div>
         </a>
 
-        <a class="project-card c-purple" onclick="showProject('p2')" href="#">
+        <a class="project-card c-purple" onclick="showProject('p2')" href="#" style="position:relative;">
+          <div class="cs-card-badge">Coming Soon</div>
           <div class="card-top">
             <div class="card-icon">🧠</div>
             <span class="card-tag">DRL · Resource</span>
@@ -751,7 +844,8 @@ footer a:hover { color: white; }
           </div>
         </a>
 
-        <a class="project-card c-green" onclick="showProject('p3')" href="#">
+        <a class="project-card c-green" onclick="showProject('p3')" href="#" style="position:relative;">
+          <div class="cs-card-badge">Coming Soon</div>
           <div class="card-top">
             <div class="card-icon">🔭</div>
             <span class="card-tag">MIMO · mmWave</span>
@@ -764,7 +858,8 @@ footer a:hover { color: white; }
           </div>
         </a>
 
-        <a class="project-card c-orange" onclick="showProject('p4')" href="#">
+        <a class="project-card c-orange" onclick="showProject('p4')" href="#" style="position:relative;">
+          <div class="cs-card-badge">Coming Soon</div>
           <div class="card-top">
             <div class="card-icon">📶</div>
             <span class="card-tag">Channel · mmWave</span>
@@ -777,7 +872,8 @@ footer a:hover { color: white; }
           </div>
         </a>
 
-        <a class="project-card c-teal" onclick="showProject('p5')" href="#">
+        <a class="project-card c-teal" onclick="showProject('p5')" href="#" style="position:relative;">
+          <div class="cs-card-badge">Coming Soon</div>
           <div class="card-top">
             <div class="card-icon">⚡</div>
             <span class="card-tag">Resource · DRL</span>
@@ -790,7 +886,8 @@ footer a:hover { color: white; }
           </div>
         </a>
 
-        <a class="project-card c-red" onclick="showProject('p6')" href="#">
+        <a class="project-card c-red" onclick="showProject('p6')" href="#" style="position:relative;">
+          <div class="cs-card-badge">Coming Soon</div>
           <div class="card-top">
             <div class="card-icon">🔗</div>
             <span class="card-tag">MIMO · Channel</span>
@@ -989,31 +1086,16 @@ footer a:hover { color: white; }
       <div class="result-grid" id="pResults"></div>
     </div>
 
-    <!-- p1 interactive demo (shown only for p1) -->
+    <!-- p1 interactive hex demo -->
     <div class="project-section" id="p1Demo" style="display:none;">
       <h2>Interactive Demo — Moving Users in mmWave Hex Network</h2>
       <p style="font-size:0.9rem;color:var(--text-mid);margin-bottom:20px;">Users move and bounce strictly inside each hexagonal cell. Adjust speed, cells, and users — then run the simulation to compare DRL against baselines.</p>
-
       <div style="display:grid;grid-template-columns:210px 1fr;gap:16px;align-items:start;">
-
         <div style="background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);padding:18px;">
           <div style="font-size:11px;font-weight:600;color:var(--text-dim);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px;">Network</div>
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:11px;">
-            <label style="font-size:12px;color:var(--text-mid);min-width:90px;">Hex cells</label>
-            <input type="range" id="p1C" min="1" max="7" value="3" step="1" style="flex:1;" oninput="p1vC.textContent=this.value;p1rebuild();">
-            <span id="p1vC" style="font-size:13px;font-weight:500;color:var(--text);min-width:20px;text-align:right;">3</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:11px;">
-            <label style="font-size:12px;color:var(--text-mid);min-width:90px;">Users / cell</label>
-            <input type="range" id="p1U" min="1" max="8" value="3" step="1" style="flex:1;" oninput="p1vU.textContent=this.value;p1rebuild();">
-            <span id="p1vU" style="font-size:13px;font-weight:500;color:var(--text);min-width:20px;text-align:right;">3</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
-            <label style="font-size:12px;color:var(--text-mid);min-width:90px;">Antennas</label>
-            <input type="range" id="p1A" min="16" max="256" value="64" step="16" style="flex:1;" oninput="p1vA.textContent=this.value;">
-            <span id="p1vA" style="font-size:13px;font-weight:500;color:var(--text);min-width:28px;text-align:right;">64</span>
-          </div>
-
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:11px;"><label style="font-size:12px;color:var(--text-mid);min-width:90px;">Hex cells</label><input type="range" id="p1C" min="1" max="7" value="3" step="1" style="flex:1;" oninput="p1vC.textContent=this.value;p1rebuild();"><span id="p1vC" style="font-size:13px;font-weight:500;color:var(--text);min-width:20px;text-align:right;">3</span></div>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:11px;"><label style="font-size:12px;color:var(--text-mid);min-width:90px;">Users / cell</label><input type="range" id="p1U" min="1" max="8" value="3" step="1" style="flex:1;" oninput="p1vU.textContent=this.value;p1rebuild();"><span id="p1vU" style="font-size:13px;font-weight:500;color:var(--text);min-width:20px;text-align:right;">3</span></div>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;"><label style="font-size:12px;color:var(--text-mid);min-width:90px;">Antennas</label><input type="range" id="p1A" min="16" max="256" value="64" step="16" style="flex:1;" oninput="p1vA.textContent=this.value;"><span id="p1vA" style="font-size:13px;font-weight:500;color:var(--text);min-width:28px;text-align:right;">64</span></div>
           <div style="font-size:11px;font-weight:600;color:var(--text-dim);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;">User speed</div>
           <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px;" id="p1SB">
             <button onclick="p1SetSpd(this)" data-v="0.5" style="font-size:11px;padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--text-mid);cursor:pointer;">0.5</button>
@@ -1023,12 +1105,7 @@ footer a:hover { color: white; }
             <button onclick="p1SetSpd(this)" data-v="10"  style="font-size:11px;padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--text-mid);cursor:pointer;">10</button>
             <button onclick="p1SetSpd(this)" data-v="30"  style="font-size:11px;padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--text-mid);cursor:pointer;">30</button>
           </div>
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
-            <label style="font-size:12px;color:var(--text-mid);min-width:90px;">Custom m/s</label>
-            <input type="range" id="p1V" min="1" max="120" value="3" step="1" style="flex:1;" oninput="p1spd=+this.value;p1vV.textContent=this.value+' m/s';p1syncSpd();">
-            <span id="p1vV" style="font-size:13px;font-weight:500;color:var(--text);min-width:40px;text-align:right;">3 m/s</span>
-          </div>
-
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;"><label style="font-size:12px;color:var(--text-mid);min-width:90px;">Custom m/s</label><input type="range" id="p1V" min="1" max="120" value="3" step="1" style="flex:1;" oninput="p1spd=+this.value;p1vV.textContent=this.value+' m/s';p1syncSpd();"><span id="p1vV" style="font-size:13px;font-weight:500;color:var(--text);min-width:40px;text-align:right;">3 m/s</span></div>
           <div style="font-size:11px;font-weight:600;color:var(--text-dim);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;">Algorithm</div>
           <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:14px;" id="p1AB">
             <button onclick="p1SA('drl',this)" style="font-size:12px;padding:7px 10px;border:1px solid var(--accent);background:var(--accent-light);color:var(--accent);border-radius:6px;cursor:pointer;text-align:left;font-family:'JetBrains Mono',monospace;">DRL (implicit CSI)</button>
@@ -1036,11 +1113,9 @@ footer a:hover { color: white; }
             <button onclick="p1SA('uni',this)" style="font-size:12px;padding:7px 10px;border:1px solid var(--border);background:transparent;color:var(--text-mid);border-radius:6px;cursor:pointer;text-align:left;font-family:'JetBrains Mono',monospace;">Uniform power</button>
             <button onclick="p1SA('all',this)" style="font-size:12px;padding:7px 10px;border:1px solid var(--border);background:transparent;color:var(--text-mid);border-radius:6px;cursor:pointer;text-align:left;font-family:'JetBrains Mono',monospace;">Compare all</button>
           </div>
-
           <button id="p1RB" onclick="p1Run()" style="width:100%;padding:9px;background:var(--accent);color:white;border:none;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;margin-bottom:7px;">▶ Run simulation</button>
           <div style="height:3px;background:var(--border);border-radius:2px;overflow:hidden;margin-bottom:6px;"><div id="p1PF" style="height:100%;background:var(--accent);width:0%;transition:width .1s;border-radius:2px;"></div></div>
           <div id="p1ST" style="font-size:11px;color:var(--text-dim);">Ready</div>
-
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:14px;">
             <div style="background:var(--white);border:1px solid var(--border);border-radius:6px;padding:10px;text-align:center;"><div id="p1r1" style="font-size:1.1rem;font-weight:600;color:var(--accent);">—</div><div style="font-size:10px;color:var(--text-dim);margin-top:2px;">Sum rate</div></div>
             <div style="background:var(--white);border:1px solid var(--border);border-radius:6px;padding:10px;text-align:center;"><div id="p1r2" style="font-size:1.1rem;font-weight:600;color:var(--accent);">—</div><div style="font-size:10px;color:var(--text-dim);margin-top:2px;">BER</div></div>
@@ -1048,7 +1123,6 @@ footer a:hover { color: white; }
             <div style="background:var(--white);border:1px solid var(--border);border-radius:6px;padding:10px;text-align:center;"><div id="p1r4" style="font-size:1.1rem;font-weight:600;color:var(--accent);">—</div><div style="font-size:10px;color:var(--text-dim);margin-top:2px;">Conv.</div></div>
           </div>
         </div>
-
         <div>
           <div style="font-size:11px;font-weight:600;color:var(--text-dim);text-transform:uppercase;letter-spacing:.07em;margin-bottom:7px;">Live network — users at <span id="p1SpeedLbl">3 m/s</span></div>
           <canvas id="p1HC" style="width:100%;height:340px;border:1px solid var(--border);border-radius:var(--radius-sm);background:#f8faff;display:block;margin-bottom:7px;"></canvas>
@@ -1064,7 +1138,7 @@ footer a:hover { color: white; }
       </div>
     </div>
 
-    <!-- generic canvas for other projects -->
+    <!-- generic canvas (hidden for p1) -->
     <div class="project-section" id="p1GenericDemo">
       <h2>System Visualization</h2>
       <canvas id="demoCanvas"></canvas>
@@ -1220,9 +1294,9 @@ const projects = {
 
 // ── NAVIGATION ──
 function showPortfolio() {
-  if (p1raf) { cancelAnimationFrame(p1raf); p1raf = null; }
   document.getElementById('mainPortfolio').classList.remove('hidden');
   document.getElementById('projectPage').classList.remove('active');
+  document.getElementById('csPage').classList.remove('active');
   window.scrollTo(0, 0);
 }
 
@@ -1230,56 +1304,77 @@ function showProject(id) {
   const p = projects[id];
   if(!p) return;
 
-  // Populate
-  document.getElementById('pTag').textContent = p.tag;
-  document.getElementById('pTag').className = 'card-tag';
-  const tagEl = document.getElementById('pTag');
   const colorMap = { 'c-blue': '#eff4ff', 'c-purple': '#f5f0ff', 'c-green': '#ecfdf5', 'c-orange': '#fff7ed', 'c-teal': '#ecfeff', 'c-red': '#fef2f2' };
   const textMap  = { 'c-blue': '#2563eb', 'c-purple': '#7c3aed', 'c-green': '#059669', 'c-orange': '#ea580c', 'c-teal': '#0891b2', 'c-red': '#dc2626' };
-  tagEl.style.background = colorMap[p.tagClass] || '#eff4ff';
-  tagEl.style.color = textMap[p.tagClass] || '#2563eb';
+  const iconMap  = { p1:'📡', p2:'🧠', p3:'🔭', p4:'📶', p5:'⚡', p6:'🔗' };
 
-  document.getElementById('pTitle').textContent = p.title;
-  document.getElementById('pDesc').textContent = p.desc;
-  document.getElementById('pVenue').textContent = p.venue;
-  document.getElementById('pYear').textContent = p.year;
-  document.getElementById('pType').textContent = p.type;
-  document.getElementById('pOverview').textContent = p.overview;
-  document.getElementById('pHighlight').textContent = p.highlight;
-
-  const rg = document.getElementById('pResults');
-  rg.innerHTML = p.results.map(r => `
-    <div class="result-card">
-      <div class="result-num">${r.num}</div>
-      <div class="result-label">${r.label}</div>
-    </div>`).join('');
-
-  const tg = document.getElementById('pTags');
-  tg.innerHTML = p.tags.map(t => `<span class="tag">${t}</span>`).join('');
-
-  const pl = document.getElementById('pPubLink');
-  pl.href = p.link;
-  document.getElementById('pLinkSection').style.display = p.link === '#' ? 'none' : 'block';
-
-  document.getElementById('mainPortfolio').classList.add('hidden');
-  document.getElementById('projectPage').classList.add('active');
-  window.scrollTo(0, 0);
-
+  // p1 → full interactive page
   if (id === 'p1') {
+    document.getElementById('pTag').textContent = p.tag;
+    document.getElementById('pTag').className = 'card-tag';
+    const tagEl = document.getElementById('pTag');
+    tagEl.style.background = colorMap[p.tagClass] || '#eff4ff';
+    tagEl.style.color = textMap[p.tagClass] || '#2563eb';
+    document.getElementById('pTitle').textContent = p.title;
+    document.getElementById('pDesc').textContent = p.desc;
+    document.getElementById('pVenue').textContent = p.venue;
+    document.getElementById('pYear').textContent = p.year;
+    document.getElementById('pType').textContent = p.type;
+    document.getElementById('pOverview').textContent = p.overview;
+    document.getElementById('pHighlight').textContent = p.highlight;
+    const rg = document.getElementById('pResults');
+    rg.innerHTML = p.results.map(r => `<div class="result-card"><div class="result-num">${r.num}</div><div class="result-label">${r.label}</div></div>`).join('');
+    const tg = document.getElementById('pTags');
+    tg.innerHTML = p.tags.map(t => `<span class="tag">${t}</span>`).join('');
+    const pl = document.getElementById('pPubLink');
+    pl.href = p.link;
+    document.getElementById('pLinkSection').style.display = p.link === '#' ? 'none' : 'block';
+
+    document.getElementById('mainPortfolio').classList.add('hidden');
+    document.getElementById('projectPage').classList.add('active');
+    document.getElementById('csPage').classList.remove('active');
+    window.scrollTo(0, 0);
+
+    // p1 demo
     document.getElementById('p1Demo').style.display = 'block';
     document.getElementById('p1GenericDemo').style.display = 'none';
     setTimeout(() => {
       if (p1raf) cancelAnimationFrame(p1raf);
-      p1done = false;
-      p1rebuild();
+      p1done = false; p1rebuild();
       p1raf = requestAnimationFrame(p1loop);
       p1drawBER();
     }, 150);
-  } else {
-    document.getElementById('p1Demo').style.display = 'none';
-    document.getElementById('p1GenericDemo').style.display = 'block';
-    setTimeout(() => drawProjectCanvas(p.canvasType, textMap[p.tagClass] || '#2563eb'), 100);
+    return;
   }
+
+  // p2–p6 → Coming Soon page
+  const csTagEl = document.getElementById('csTagEl');
+  csTagEl.textContent = p.tag;
+  csTagEl.style.background = colorMap[p.tagClass] || '#eff4ff';
+  csTagEl.style.color = textMap[p.tagClass] || '#2563eb';
+  csTagEl.style.display = 'inline-block';
+  csTagEl.style.fontFamily = "'JetBrains Mono',monospace";
+  csTagEl.style.fontSize = '11px';
+  csTagEl.style.padding = '4px 12px';
+  csTagEl.style.borderRadius = '20px';
+  csTagEl.style.marginBottom = '16px';
+
+  document.getElementById('csIcon').textContent = iconMap[id] || '📡';
+  document.getElementById('csTitle').textContent = p.title;
+  document.getElementById('csDesc').textContent = p.desc;
+
+  const pubLink = document.getElementById('csPubLink');
+  if (p.link && p.link !== '#') {
+    pubLink.href = p.link;
+    pubLink.style.display = 'inline-block';
+  } else {
+    pubLink.style.display = 'none';
+  }
+
+  document.getElementById('mainPortfolio').classList.add('hidden');
+  document.getElementById('projectPage').classList.remove('active');
+  document.getElementById('csPage').classList.add('active');
+  window.scrollTo(0, 0);
 }
 
 // ── CANVAS DEMO ──
@@ -1493,190 +1588,110 @@ function filterProjects(tag, btn) {
   });
 }
 
-// ── PREVENT DEFAULT ON CARDS ──
-document.querySelectorAll('.project-card').forEach(card => {
-  card.addEventListener('click', e => e.preventDefault());
-});
-
 // ══════════ P1 MOVING-USER HEX DEMO ══════════
-const P1_LAYOUTS = {1:[[0,0]],2:[[0,0],[1,0]],3:[[0,0],[1,0],[0,1]],4:[[0,0],[1,0],[0,1],[1,1]],5:[[0,0],[1,0],[2,0],[0,1],[1,1]],6:[[0,0],[1,0],[2,0],[0,1],[1,1],[2,1]],7:[[0,0],[1,0],[2,0],[0,1],[1,1],[2,1],[1,2]]};
-const P1_COLS = ['#2563eb','#1D9E75','#BA7517','#7F77DD','#0F6E56','#D85A30','#D4537E'];
-const P1_PX_PER_M = 10;
+const P1_LAYOUTS={1:[[0,0]],2:[[0,0],[1,0]],3:[[0,0],[1,0],[0,1]],4:[[0,0],[1,0],[0,1],[1,1]],5:[[0,0],[1,0],[2,0],[0,1],[1,1]],6:[[0,0],[1,0],[2,0],[0,1],[1,1],[2,1]],7:[[0,0],[1,0],[2,0],[0,1],[1,1],[2,1],[1,2]]};
+const P1_COLS=['#2563eb','#1D9E75','#BA7517','#7F77DD','#0F6E56','#D85A30','#D4537E'];
+const P1_PX=10;
+let p1raf=null,p1algo='drl',p1done=false,p1spd=3,p1cells=[],p1users=[];
 
-let p1raf = null, p1algo = 'drl', p1done = false, p1spd = 3;
-let p1cells = [], p1users = [];
-
-function p1hexEdges(cx, cy, r) {
-  const pts = Array.from({length:6}, (_,i) => {
-    const a = Math.PI/3*i - Math.PI/6;
-    return [cx + r*Math.cos(a), cy + r*Math.sin(a)];
-  });
-  return Array.from({length:6}, (_,i) => {
-    const [x1,y1] = pts[i], [x2,y2] = pts[(i+1)%6];
-    const ex = x2-x1, ey = y2-y1, len = Math.sqrt(ex*ex+ey*ey);
-    let nx = -ey/len, ny = ex/len;
-    const mx = (x1+x2)/2-cx, my = (y1+y2)/2-cy;
-    if (nx*mx+ny*my > 0) { nx=-nx; ny=-ny; }
-    return {x1,y1,x2,y2,nx,ny,ex:ex/len,ey:ey/len};
+function p1hexEdges(cx,cy,r){
+  const pts=Array.from({length:6},(_,i)=>{const a=Math.PI/3*i-Math.PI/6;return[cx+r*Math.cos(a),cy+r*Math.sin(a)];});
+  return Array.from({length:6},(_,i)=>{
+    const[x1,y1]=pts[i],[x2,y2]=pts[(i+1)%6];
+    const ex=x2-x1,ey=y2-y1,len=Math.sqrt(ex*ex+ey*ey);
+    let nx=-ey/len,ny=ex/len;
+    const mx=(x1+x2)/2-cx,my=(y1+y2)/2-cy;
+    if(nx*mx+ny*my>0){nx=-nx;ny=-ny;}
+    return{x1,y1,x2,y2,nx,ny};
   });
 }
-
-function p1inHex(px, py, edges) {
-  return edges.every(e => (px-e.x1)*e.nx + (py-e.y1)*e.ny >= 0);
-}
-
-function p1step(u, edges) {
-  let px=u.x+u.dx, py=u.y+u.dy, vx=u.dx, vy=u.dy;
-  for (let iter=0; iter<4; iter++) {
+function p1inHex(px,py,edges){return edges.every(e=>(px-e.x1)*e.nx+(py-e.y1)*e.ny>=0);}
+function p1step(u,edges){
+  let px=u.x+u.dx,py=u.y+u.dy,vx=u.dx,vy=u.dy;
+  for(let iter=0;iter<4;iter++){
     let hit=false;
-    for (const e of edges) {
-      const d = (px-e.x1)*e.nx + (py-e.y1)*e.ny;
-      if (d < 0) {
-        px -= d*e.nx; py -= d*e.ny;
-        const dot = vx*e.nx + vy*e.ny;
-        vx -= 2*dot*e.nx; vy -= 2*dot*e.ny;
-        hit=true;
-      }
-    }
-    if (!hit) break;
+    for(const e of edges){const d=(px-e.x1)*e.nx+(py-e.y1)*e.ny;if(d<0){px-=d*e.nx;py-=d*e.ny;const dot=vx*e.nx+vy*e.ny;vx-=2*dot*e.nx;vy-=2*dot*e.ny;hit=true;}}
+    if(!hit)break;
   }
-  for (const e of edges) {
-    const d=(px-e.x1)*e.nx+(py-e.y1)*e.ny;
-    if(d<0){px-=d*e.nx;py-=d*e.ny;}
-  }
-  u.x=px; u.y=py;
-  const len=Math.sqrt(vx*vx+vy*vy)||1;
-  const s=(p1spd*P1_PX_PER_M)/60;
-  u.dx=vx/len*s; u.dy=vy/len*s;
+  for(const e of edges){const d=(px-e.x1)*e.nx+(py-e.y1)*e.ny;if(d<0){px-=d*e.nx;py-=d*e.ny;}}
+  u.x=px;u.y=py;
+  const len=Math.sqrt(vx*vx+vy*vy)||1,s=(p1spd*P1_PX)/60;
+  u.dx=vx/len*s;u.dy=vy/len*s;
 }
-
-function p1rebuild() {
-  const cv = document.getElementById('p1HC'); if(!cv) return;
-  const W=cv.offsetWidth, H=340;
-  const nC=+document.getElementById('p1C').value;
-  const nU=+document.getElementById('p1U').value;
+function p1rebuild(){
+  const cv=document.getElementById('p1HC');if(!cv)return;
+  const W=cv.offsetWidth,H=340;
+  const nC=+document.getElementById('p1C').value,nU=+document.getElementById('p1U').value;
   const layout=P1_LAYOUTS[nC];
-  const cols=Math.max(...layout.map(l=>l[0]))+1;
-  const rows=Math.max(...layout.map(l=>l[1]))+1;
+  const cols=Math.max(...layout.map(l=>l[0]))+1,rows=Math.max(...layout.map(l=>l[1]))+1;
   const sz=Math.min((W-40)/(cols*Math.sqrt(3)+(rows>1?Math.sqrt(3)/2:0)+0.3),(H-40)/(rows*1.5+0.5),85);
-  const totalW=sz*Math.sqrt(3)*(cols+(rows>1?0.5:0));
-  const totalH=sz*(1.5*(rows-1)+Math.sqrt(3));
-  const ox=(W-totalW)/2+sz*Math.sqrt(3)/2;
-  const oy=(H-totalH)/2+sz*Math.sqrt(3)/2;
-
-  p1cells = layout.map(([c,r],i)=>{
-    const cx=ox+sz*Math.sqrt(3)*(c+(r&1)*0.5);
-    const cy=oy+sz*1.5*r;
-    return {cx,cy,sz,color:P1_COLS[i%P1_COLS.length],edges:p1hexEdges(cx,cy,sz*0.93)};
-  });
-
-  p1users = [];
+  const ox=(W-sz*Math.sqrt(3)*(cols+(rows>1?0.5:0)))/2+sz*Math.sqrt(3)/2;
+  const oy=(H-sz*(1.5*(rows-1)+Math.sqrt(3)))/2+sz*Math.sqrt(3)/2;
+  p1cells=layout.map(([c,r],i)=>{const cx=ox+sz*Math.sqrt(3)*(c+(r&1)*0.5),cy=oy+sz*1.5*r;return{cx,cy,sz,color:P1_COLS[i%P1_COLS.length],edges:p1hexEdges(cx,cy,sz*0.93)};});
+  p1users=[];
   p1cells.forEach((cell,ci)=>{
     for(let u=0;u<nU;u++){
-      let x,y,tries=0;
-      do {
-        const a=Math.random()*Math.PI*2, r2=Math.sqrt(Math.random())*cell.sz*0.82;
-        x=cell.cx+Math.cos(a)*r2; y=cell.cy+Math.sin(a)*r2; tries++;
-      } while(!p1inHex(x,y,cell.edges) && tries<60);
-      const va=Math.random()*Math.PI*2, s=(p1spd*P1_PX_PER_M)/60;
+      let x,y,t=0;
+      do{const a=Math.random()*Math.PI*2,r2=Math.sqrt(Math.random())*cell.sz*0.82;x=cell.cx+Math.cos(a)*r2;y=cell.cy+Math.sin(a)*r2;t++;}while(!p1inHex(x,y,cell.edges)&&t<60);
+      const va=Math.random()*Math.PI*2,s=(p1spd*P1_PX)/60;
       p1users.push({x,y,dx:Math.cos(va)*s,dy:Math.sin(va)*s,cell:ci,interfered:false});
     }
   });
 }
-
-function p1update() {
-  p1users.forEach(u=>{
-    const cell=p1cells[u.cell]; if(!cell) return;
-    p1step(u, cell.edges);
-    u.interfered = Math.random()<0.15+p1spd*0.008;
-  });
-}
-
-function p1draw() {
-  const cv=document.getElementById('p1HC'); if(!cv||!p1cells.length) return;
+function p1update(){p1users.forEach(u=>{const cell=p1cells[u.cell];if(!cell)return;p1step(u,cell.edges);u.interfered=Math.random()<0.15+p1spd*0.008;});}
+function p1draw(){
+  const cv=document.getElementById('p1HC');if(!cv||!p1cells.length)return;
   const dpr=window.devicePixelRatio||1;
   if(cv.width!==cv.offsetWidth*dpr){cv.width=cv.offsetWidth*dpr;cv.height=340*dpr;cv.getContext('2d').scale(dpr,dpr);}
-  const ctx=cv.getContext('2d'), W=cv.offsetWidth, H=340;
-  ctx.clearRect(0,0,W,H);
-  ctx.fillStyle='#f8faff'; ctx.fillRect(0,0,W,H);
-
+  const ctx=cv.getContext('2d'),W=cv.offsetWidth,H=340;
+  ctx.clearRect(0,0,W,H);ctx.fillStyle='#f8faff';ctx.fillRect(0,0,W,H);
   p1cells.forEach(cell=>{
     const pts=Array.from({length:6},(_,i)=>{const a=Math.PI/3*i-Math.PI/6;return[cell.cx+cell.sz*0.96*Math.cos(a),cell.cy+cell.sz*0.96*Math.sin(a)];});
     ctx.beginPath();pts.forEach(([x,y],j)=>j?ctx.lineTo(x,y):ctx.moveTo(x,y));ctx.closePath();
     ctx.fillStyle=cell.color+'18';ctx.strokeStyle=cell.color+'99';ctx.lineWidth=1.5;ctx.fill();ctx.stroke();
   });
-
-  for(let i=0;i<p1cells.length;i++) for(let j=i+1;j<p1cells.length;j++){
-    const a=p1cells[i],b=p1cells[j];
-    const dx=b.cx-a.cx,dy=b.cy-a.cy;
-    if(Math.sqrt(dx*dx+dy*dy)<a.sz*2.1){
-      ctx.beginPath();ctx.setLineDash([5,7]);ctx.strokeStyle='rgba(226,75,74,0.18)';ctx.lineWidth=1;
-      ctx.moveTo(a.cx,a.cy);ctx.lineTo(b.cx,b.cy);ctx.stroke();ctx.setLineDash([]);
-    }
+  for(let i=0;i<p1cells.length;i++)for(let j=i+1;j<p1cells.length;j++){
+    const a=p1cells[i],b=p1cells[j],dx=b.cx-a.cx,dy=b.cy-a.cy;
+    if(Math.sqrt(dx*dx+dy*dy)<a.sz*2.1){ctx.beginPath();ctx.setLineDash([5,7]);ctx.strokeStyle='rgba(226,75,74,0.18)';ctx.lineWidth=1;ctx.moveTo(a.cx,a.cy);ctx.lineTo(b.cx,b.cy);ctx.stroke();ctx.setLineDash([]);}
   }
-
   p1users.forEach(u=>{
-    const cell=p1cells[u.cell]; if(!cell) return;
-    ctx.beginPath();ctx.strokeStyle=u.interfered?'rgba(226,75,74,0.3)':cell.color+'50';ctx.lineWidth=1;
-    ctx.moveTo(cell.cx,cell.cy);ctx.lineTo(u.x,u.y);ctx.stroke();
+    const cell=p1cells[u.cell];if(!cell)return;
+    ctx.beginPath();ctx.strokeStyle=u.interfered?'rgba(226,75,74,0.3)':cell.color+'50';ctx.lineWidth=1;ctx.moveTo(cell.cx,cell.cy);ctx.lineTo(u.x,u.y);ctx.stroke();
     const s=Math.sqrt(u.dx*u.dx+u.dy*u.dy)||1;
-    ctx.beginPath();ctx.strokeStyle=u.interfered?'#E24B4Aaa':'#1D9E75aa';ctx.lineWidth=1.5;
-    ctx.moveTo(u.x,u.y);ctx.lineTo(u.x+u.dx/s*9,u.y+u.dy/s*9);ctx.stroke();
+    ctx.beginPath();ctx.strokeStyle=u.interfered?'#E24B4Aaa':'#1D9E75aa';ctx.lineWidth=1.5;ctx.moveTo(u.x,u.y);ctx.lineTo(u.x+u.dx/s*9,u.y+u.dy/s*9);ctx.stroke();
     ctx.beginPath();ctx.arc(u.x,u.y,5,0,Math.PI*2);ctx.fillStyle=u.interfered?'#E24B4A':'#1D9E75';ctx.fill();
   });
-
-  p1cells.forEach((cell,i)=>{
-    ctx.beginPath();ctx.arc(cell.cx,cell.cy,12,0,Math.PI*2);ctx.fillStyle=cell.color;ctx.fill();
-    ctx.fillStyle='#fff';ctx.font='bold 9px sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
-    ctx.fillText('B'+i,cell.cx,cell.cy);
-  });
-
+  p1cells.forEach((cell,i)=>{ctx.beginPath();ctx.arc(cell.cx,cell.cy,12,0,Math.PI*2);ctx.fillStyle=cell.color;ctx.fill();ctx.fillStyle='#fff';ctx.font='bold 9px sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('B'+i,cell.cx,cell.cy);});
   const served=p1users.filter(u=>!u.interfered).length;
   ctx.fillStyle='#8496b0';ctx.font='11px Inter,sans-serif';ctx.textAlign='left';ctx.textBaseline='top';
   ctx.fillText(`${served}/${p1users.length} served  ·  ${p1spd} m/s`,10,8);
 }
-
 function p1loop(){p1update();p1draw();p1raf=requestAnimationFrame(p1loop);}
-
 function p1SetSpd(btn){
   document.querySelectorAll('#p1SB button').forEach(b=>{b.style.borderColor='var(--border)';b.style.background='transparent';b.style.color='var(--text-mid)';b.style.fontWeight='';});
   btn.style.borderColor='var(--accent)';btn.style.background='var(--accent-light)';btn.style.color='var(--accent)';btn.style.fontWeight='600';
-  p1spd=+btn.dataset.v;
-  document.getElementById('p1V').value=p1spd;
-  document.getElementById('p1vV').textContent=p1spd+' m/s';
-  document.getElementById('p1SpeedLbl').textContent=p1spd+' m/s';
-  p1users.forEach(u=>{const l=Math.sqrt(u.dx*u.dx+u.dy*u.dy)||1,s=(p1spd*P1_PX_PER_M)/60;u.dx=u.dx/l*s;u.dy=u.dy/l*s;});
+  p1spd=+btn.dataset.v;document.getElementById('p1V').value=p1spd;document.getElementById('p1vV').textContent=p1spd+' m/s';document.getElementById('p1SpeedLbl').textContent=p1spd+' m/s';
+  p1users.forEach(u=>{const l=Math.sqrt(u.dx*u.dx+u.dy*u.dy)||1,s=(p1spd*P1_PX)/60;u.dx=u.dx/l*s;u.dy=u.dy/l*s;});
 }
-
 function p1syncSpd(){
   document.getElementById('p1SpeedLbl').textContent=p1spd+' m/s';
-  document.querySelectorAll('#p1SB button').forEach(b=>{
-    const on=+b.dataset.v===p1spd;
-    b.style.borderColor=on?'var(--accent)':'var(--border)';
-    b.style.background=on?'var(--accent-light)':'transparent';
-    b.style.color=on?'var(--accent)':'var(--text-mid)';
-    b.style.fontWeight=on?'600':'';
-  });
-  p1users.forEach(u=>{const l=Math.sqrt(u.dx*u.dx+u.dy*u.dy)||1,s=(p1spd*P1_PX_PER_M)/60;u.dx=u.dx/l*s;u.dy=u.dy/l*s;});
+  document.querySelectorAll('#p1SB button').forEach(b=>{const on=+b.dataset.v===p1spd;b.style.borderColor=on?'var(--accent)':'var(--border)';b.style.background=on?'var(--accent-light)':'transparent';b.style.color=on?'var(--accent)':'var(--text-mid)';b.style.fontWeight=on?'600':'';});
+  p1users.forEach(u=>{const l=Math.sqrt(u.dx*u.dx+u.dy*u.dy)||1,s=(p1spd*P1_PX)/60;u.dx=u.dx/l*s;u.dy=u.dy/l*s;});
 }
-
 function p1SA(a,btn){
   p1algo=a;
   document.querySelectorAll('#p1AB button').forEach(b=>{b.style.borderColor='var(--border)';b.style.background='transparent';b.style.color='var(--text-mid)';});
   btn.style.borderColor='var(--accent)';btn.style.background='var(--accent-light)';btn.style.color='var(--accent)';
-  if(p1done) p1drawBER();
+  if(p1done)p1drawBER();
 }
-
 function p1drawBER(){
-  const cv=document.getElementById('p1BC'); if(!cv) return;
+  const cv=document.getElementById('p1BC');if(!cv)return;
   const dpr=window.devicePixelRatio||1;
   if(!cv._init){cv.width=cv.offsetWidth*dpr;cv.height=210*dpr;cv._init=true;}
-  const ctx=cv.getContext('2d'), W=cv.offsetWidth, H=210;
-  ctx.setTransform(dpr,0,0,dpr,0,0);
-  ctx.clearRect(0,0,W,H);ctx.fillStyle='#f8faff';ctx.fillRect(0,0,W,H);
+  const ctx=cv.getContext('2d'),W=cv.offsetWidth,H=210;
+  ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);ctx.fillStyle='#f8faff';ctx.fillRect(0,0,W,H);
   const P={t:22,r:16,b:36,l:52},PW=W-P.l-P.r,PH=H-P.t-P.b;
-  const nC=+document.getElementById('p1C').value, ant=+document.getElementById('p1A').value;
-  const lc='#8496b0';
+  const nC=+document.getElementById('p1C').value,ant=+document.getElementById('p1A').value,lc='#8496b0';
   ctx.strokeStyle='rgba(0,0,0,0.07)';ctx.lineWidth=0.5;
   for(let i=0;i<=4;i++){const y=P.t+PH*(1-i/4);ctx.beginPath();ctx.moveTo(P.l,y);ctx.lineTo(P.l+PW,y);ctx.stroke();}
   for(let i=0;i<=5;i++){const x=P.l+PW*i/5;ctx.beginPath();ctx.moveTo(x,P.t);ctx.lineTo(x,P.t+PH);ctx.stroke();}
@@ -1700,7 +1715,6 @@ function p1drawBER(){
     const lb=a==='drl'?'DRL (ours)':a==='zf'?'Zero-forcing':'Uniform';ctx.fillText(lb,lx+20,P.t+14);lx+=ctx.measureText(lb).width+38;
   });
 }
-
 function p1Run(){
   const btn=document.getElementById('p1RB');btn.disabled=true;
   const pf=document.getElementById('p1PF'),st=document.getElementById('p1ST');
@@ -1711,11 +1725,7 @@ function p1Run(){
     if(p>=100){
       p=100;clearInterval(iv);pf.style.width='100%';btn.disabled=false;p1done=true;p1drawBER();
       const a=p1algo==='all'?'drl':p1algo;
-      const R={
-        drl:[`+${Math.round(18+(nC-1)*2+ant/16-p1spd*0.25)}%`,p1spd>10?'7.2e-4':'2.1e-4',`${Math.max(8,18+ant/16-p1spd*0.12).toFixed(1)} dB`,'~120'],
-        zf:['+7%',p1spd>10?'1.1e-3':'8.3e-4','11.2 dB','N/A'],
-        uni:['Baseline',p1spd>10?'3.8e-3':'3.1e-3','6.8 dB','N/A']
-      }[a];
+      const R={drl:[`+${Math.round(18+(nC-1)*2+ant/16-p1spd*0.25)}%`,p1spd>10?'7.2e-4':'2.1e-4',`${Math.max(8,18+ant/16-p1spd*0.12).toFixed(1)} dB`,'~120'],zf:['+7%',p1spd>10?'1.1e-3':'8.3e-4','11.2 dB','N/A'],uni:['Baseline',p1spd>10?'3.8e-3':'3.1e-3','6.8 dB','N/A']}[a];
       ['p1r1','p1r2','p1r3','p1r4'].forEach((id,i)=>document.getElementById(id).textContent=R[i]);
       st.textContent=`Done — ${nC} cells · ${ant} ant · ${p1spd} m/s`;
     }
@@ -1723,5 +1733,30 @@ function p1Run(){
   },70);
 }
 </script>
+<!-- ══════════ COMING SOON PAGE ══════════ -->
+<div class="project-page" id="csPage">
+  <div class="project-hero" style="min-height:60vh; display:flex; align-items:center;">
+    <div class="project-hero-inner" style="width:100%;">
+      <button class="back-btn" onclick="showPortfolio()">← Back to Projects</button>
+      <div class="cs-wrap">
+        <div class="cs-badge">🚧 Coming Soon</div>
+        <div class="cs-icon" id="csIcon">📡</div>
+        <div class="cs-tag" id="csTagEl"></div>
+        <h1 class="cs-title" id="csTitle"></h1>
+        <p class="cs-desc" id="csDesc"></p>
+        <div style="background:var(--bg); border:1px solid var(--border); border-radius:var(--radius); padding:24px; margin-bottom:28px;">
+          <p style="font-size:0.9rem; color:var(--text-mid); margin-bottom:16px;">I'm currently building the interactive demo for this project. It will include system visualizations, live simulations, and key results.</p>
+          <div class="cs-bar"><div class="cs-bar-fill"></div></div>
+          <p class="cs-progress-lbl">Interactive demo in progress…</p>
+        </div>
+        <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+          <a id="csPubLink" href="#" target="_blank" class="btn-primary" style="display:none;">View on IEEE Xplore →</a>
+          <button onclick="showPortfolio()" class="btn-secondary">← Back to all projects</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
